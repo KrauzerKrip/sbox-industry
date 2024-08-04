@@ -1,0 +1,182 @@
+{
+  "__guid": "b44b37db-b8be-432f-a573-4f688cd01a6a",
+  "GameObjects": [
+    {
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "de79e9e0-5c37-4c54-ac67-bfcdb1d5483b",
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "f3e304db-baab-4c1a-a4ec-8442585c2d62",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.02,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "Projection": "Sphere",
+          "RenderDynamically": false,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    },
+    {
+      "__guid": "efd309b4-5724-4c34-89bc-1c4240bd0c47",
+      "Flags": 0,
+      "Name": "Map Instance",
+      "Position": "-269.1585,-771.4283,293.6671",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "d45404ef-0724-4b03-8e37-73d91958523d",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/main.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+      "Flags": 0,
+      "Name": "Player",
+      "Position": "-367.8185,-694.4884,368.3823",
+      "Tags": "player",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "5a809579-e0e7-48e1-87ee-cf58bf54da7a",
+          "BodyGroups": 341,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/citizen.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.CharacterController",
+          "__guid": "8c1de6e3-1135-4e0a-819b-f3b72efa31ba",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18,
+          "UseCollisionRules": false
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "05654141-cf6b-486d-abec-25d305c0522d",
+          "BodyWeight": 1,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "5a809579-e0e7-48e1-87ee-cf58bf54da7a",
+            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "PlayerController",
+          "__guid": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+          "Camera": {
+            "_type": "gameobject",
+            "go": "ff47c572-cfe1-474e-9728-2d722427e7f8"
+          },
+          "CharacterController": {
+            "_type": "component",
+            "component_id": "8c1de6e3-1135-4e0a-819b-f3b72efa31ba",
+            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+            "component_type": "CharacterController"
+          },
+          "CitizenAnimationHelper": {
+            "_type": "component",
+            "component_id": "05654141-cf6b-486d-abec-25d305c0522d",
+            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+            "component_type": "CitizenAnimationHelper"
+          },
+          "JumpStrength": 400,
+          "RunSpeed": 250,
+          "WalkSpeed": 120
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "ff47c572-cfe1-474e-9728-2d722427e7f8",
+          "Flags": 0,
+          "Name": "Camera",
+          "Position": "-2.162628,0,62.61008",
+          "Tags": "maincamera",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "2b086426-7a13-46d7-ab08-1984ccdad646",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 60,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "player",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
