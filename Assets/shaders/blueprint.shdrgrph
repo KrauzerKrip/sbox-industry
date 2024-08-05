@@ -1,0 +1,31 @@
+{
+  "Model": "models/dev/box.vmdl",
+  "Description": "",
+  "BlendMode": "Opaque",
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 0.7248218,
+      "DefaultRoughness": 0,
+      "DefaultMetalness": 0,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "16,0",
+      "Albedo": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float4",
+      "Value": "0,0.38333,1,1",
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {
+        "Type": "Color"
+      },
+      "Identifier": "1",
+      "Position": "-224,64"
+    }
+  ]
+}

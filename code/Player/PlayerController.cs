@@ -1,11 +1,12 @@
 using Sandbox;
 using Sandbox.Citizen;
+using System.Numerics;
 
 public sealed class PlayerController : Component
 {
 	[Property]
 	[Category( "Components" )]
-	public GameObject Camera {  get; set; }
+	public GameObject Camera { get; set; }
 	[Property]
 	[Category( "Components" )]
 	public CharacterController CharacterController { get; set; }
@@ -14,36 +15,64 @@ public sealed class PlayerController : Component
 	public CitizenAnimationHelper CitizenAnimationHelper { get; set; }
 	[Property]
 	[Category( "Stats" )]
-	[Range(0f, 400f, 1f)]
-	public float WalkSpeed { get; set; } = 120f;
+	[Range( 0f, 400f, 1f )]
+	public float WalkSpeed { get; set; } = 200f;
 	[Property]
 	[Category( "Stats" )]
-	[Range(0f, 800f, 1f)]
-	public float RunSpeed { get; set; } = 250f;
+	[Range( 0f, 800f, 1f )]
+	public float RunSpeed { get; set; } = 300f;
 	[Property]
 	[Category( "Stats" )]
-	[Range(0f, 1000f, 1f)]
+	[Range( 0f, 1000f, 1f )]
 	public float JumpStrength { get; set; } = 400f;
+	[Property]
+	[Category( "Controls" )]
+	public bool IsMachineMenuOpened { get; set; } = false;
 
 	public Angles EyeAngles { get; set; }
+
+	public Ray AimRay
+	{
+		get
+		{
+			return new( Camera.Transform.Position + Camera.Transform.Rotation.Forward, Camera.Transform.Rotation.Forward );
+		}
+	}
 
 	protected override void OnUpdate()
 	{
 		EyeAngles += Input.AnalogLook;
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-		Camera.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw ) + Rotation.FromPitch( EyeAngles.pitch );
+		Camera.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw ) * Rotation.FromPitch( EyeAngles.pitch.Clamp( -90f, 90f ) );
 	}
 
 	protected override void OnFixedUpdate()
 	{
-		var wishVelocity = Input.AnalogMove * WalkSpeed * Transform.Rotation;
+
+		float moveSpeed;
+
+		if ( Input.Down( "Run" ) )
+		{
+			moveSpeed = RunSpeed;
+		}
+		else
+		{
+			moveSpeed = WalkSpeed;
+		}
+
+		if (Input.Pressed("Menu"))
+		{
+			IsMachineMenuOpened = !IsMachineMenuOpened;
+		}
+
+		var wishVelocity = Input.AnalogMove * moveSpeed * Transform.Rotation;
 
 		CharacterController.Accelerate( wishVelocity );
 		if ( CharacterController.IsOnGround )
 		{
 			CharacterController.ApplyFriction( 5f );
 
-			if (Input.Pressed("Jump"))
+			if (Input.Pressed( "Jump" ))
 			{
 				CharacterController.Punch( Vector3.Up * JumpStrength );
 
@@ -88,4 +117,6 @@ public sealed class PlayerController : Component
 	{
 		base.OnDestroy();
 	}
+
+
 }

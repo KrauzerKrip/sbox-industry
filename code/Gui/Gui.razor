@@ -1,0 +1,24 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Machines;
+@inherits PanelComponent
+
+<root>
+	@if (PlayerController.IsMachineMenuOpened)
+	{
+		<MachineMenu PlayerController=@PlayerController BlueprintSpawner=@BlueprintSpawner></MachineMenu> 
+	}
+</root>
+
+@code
+{
+	[Property]
+	public PlayerController PlayerController { get; set; }
+	[Property]
+	public BlueprintSpawner BlueprintSpawner { get; set; }
+
+	protected override int BuildHash()
+	{
+		return Sandbox.Time.Now.GetHashCode();
+	}
+}

@@ -1,0 +1,30 @@
+﻿@using Sandbox.Machines
+<root>
+	<div class="machine-menu">
+		<div class="machine-menu-grid-container">
+			@foreach(string machineName in BlueprintSpawner.Blueprints.Keys)
+			{
+				_currentMachine = machineName;
+				<div onmousedown="@SpawnBlueprint">
+					<h4>@machineName</h4>
+				</div>
+			}
+		</div
+	</div>
+</root>
+
+@code {
+	private void SpawnBlueprint()
+	{
+		if (_currentMachine == null)
+		{
+			return;
+		}
+
+		BlueprintSpawner.SpawnOnRay(_currentMachine, PlayerController.AimRay);
+	}
+
+	private string _currentMachine;
+	public PlayerController PlayerController { get; set; }
+	public BlueprintSpawner BlueprintSpawner { get; set; }
+}

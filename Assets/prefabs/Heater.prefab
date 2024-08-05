@@ -1,0 +1,35 @@
+{
+  "RootObject": {
+    "__guid": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
+    "Flags": 0,
+    "Name": "Heater",
+    "Position": "-122.1529,-793.6725,382.5682",
+    "Tags": "machine",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "6292163f-08ea-4cf8-97cc-c09ddee778af",
+        "BodyGroups": 18446744073709551615,
+        "MaterialOverride": "materials/concrete/damage/concrete_damage_edgecaps.vmat",
+        "Model": "models/machines/heater/model.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.ModelPhysics",
+        "__guid": "eae53ac3-0b80-46ea-9a72-968d6d2064a2",
+        "Locking": {},
+        "Model": "models/machines/heater/model.vmdl",
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
