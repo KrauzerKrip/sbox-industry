@@ -130,6 +130,15 @@
             }
           ],
           "WalkSpeed": 200
+        },
+        {
+          "__type": "Sandbox.CapsuleCollider",
+          "__guid": "3baf6c43-c2fa-403c-bee2-7c19478da653",
+          "End": "0,0,68.77219",
+          "IsTrigger": false,
+          "Radius": 9.91673,
+          "Start": "0,0,8.094833",
+          "Static": false
         }
       ],
       "Children": [
@@ -236,8 +245,75 @@
       "Position": "-117.8906,-807.0719,386.1417",
       "Scale": "0.04155056,0.04694799,0.02971509",
       "Enabled": true,
-      "__Prefab": "prefabs/heater.prefab",
-      "__PrefabVariables": {}
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "5d19bcef-5cf9-4bf6-aa5e-81eb4bea3a86",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+          "Flags": 0,
+          "Name": "Heater itself",
+          "Position": "-47.2994,285.4098,1334.508",
+          "Scale": "24.06707,21.30017,33.65294",
+          "Tags": "machine",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "09177630-1507-467e-8882-19d415da0205",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/concrete/damage/concrete_damage_edgecaps.vmat",
+              "Model": "models/machines/heater/model.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.ModelPhysics",
+              "__guid": "c3d43482-5f13-4d79-8553-e47435e77b5a",
+              "__enabled": false,
+              "Locking": {},
+              "Model": "models/machines/heater/model.vmdl",
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0
+            },
+            {
+              "__type": "Blueprint",
+              "__guid": "e6aa1f32-fe33-4a75-900a-d49a1c351148",
+              "Collider": {
+                "_type": "component",
+                "component_id": "edde606b-283b-4318-ae7e-bffba87ee7fa",
+                "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+                "component_type": "ModelCollider"
+              },
+              "Physics": {
+                "_type": "component",
+                "component_id": "c3d43482-5f13-4d79-8553-e47435e77b5a",
+                "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+                "component_type": "ModelPhysics"
+              },
+              "Renderer": {
+                "_type": "component",
+                "component_id": "09177630-1507-467e-8882-19d415da0205",
+                "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+                "component_type": "ModelRenderer"
+              }
+            },
+            {
+              "__type": "Sandbox.ModelCollider",
+              "__guid": "edde606b-283b-4318-ae7e-bffba87ee7fa",
+              "IsTrigger": true,
+              "Model": "models/machines/heater/model.vmdl",
+              "Static": false
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {

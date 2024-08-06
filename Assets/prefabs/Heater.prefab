@@ -9,7 +9,7 @@
     "Components": [
       {
         "__type": "Sandbox.ModelRenderer",
-        "__guid": "6ce944a0-c4c9-4ded-a288-c4ddcd83efbf",
+        "__guid": "5d19bcef-5cf9-4bf6-aa5e-81eb4bea3a86",
         "BodyGroups": 18446744073709551615,
         "RenderType": "On",
         "Tint": "1,1,1,1"
@@ -17,17 +17,17 @@
     ],
     "Children": [
       {
-        "__guid": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
+        "__guid": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
         "Flags": 0,
         "Name": "Heater itself",
-        "Position": "-47.29941,285.4098,1334.508",
+        "Position": "-47.2994,285.4098,1334.508",
         "Scale": "24.06707,21.30017,33.65294",
         "Tags": "machine",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "6292163f-08ea-4cf8-97cc-c09ddee778af",
+            "__guid": "09177630-1507-467e-8882-19d415da0205",
             "BodyGroups": 18446744073709551615,
             "MaterialOverride": "materials/concrete/damage/concrete_damage_edgecaps.vmat",
             "Model": "models/machines/heater/model.vmdl",
@@ -36,7 +36,7 @@
           },
           {
             "__type": "Sandbox.ModelPhysics",
-            "__guid": "eae53ac3-0b80-46ea-9a72-968d6d2064a2",
+            "__guid": "c3d43482-5f13-4d79-8553-e47435e77b5a",
             "Locking": {},
             "Model": "models/machines/heater/model.vmdl",
             "MotionEnabled": true,
@@ -44,19 +44,32 @@
           },
           {
             "__type": "Blueprint",
-            "__guid": "8eae9b62-079d-49f2-be27-4c68c3fa04a7",
+            "__guid": "e6aa1f32-fe33-4a75-900a-d49a1c351148",
+            "Collider": {
+              "_type": "component",
+              "component_id": "edde606b-283b-4318-ae7e-bffba87ee7fa",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+              "component_type": "ModelCollider"
+            },
             "Physics": {
               "_type": "component",
-              "component_id": "eae53ac3-0b80-46ea-9a72-968d6d2064a2",
-              "go": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
+              "component_id": "c3d43482-5f13-4d79-8553-e47435e77b5a",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
               "component_type": "ModelPhysics"
             },
             "Renderer": {
               "_type": "component",
-              "component_id": "6292163f-08ea-4cf8-97cc-c09ddee778af",
-              "go": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
+              "component_id": "09177630-1507-467e-8882-19d415da0205",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
               "component_type": "ModelRenderer"
             }
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "edde606b-283b-4318-ae7e-bffba87ee7fa",
+            "IsTrigger": false,
+            "Model": "models/machines/heater/model.vmdl",
+            "Static": false
           }
         ]
       }

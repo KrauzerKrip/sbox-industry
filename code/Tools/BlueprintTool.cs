@@ -45,9 +45,8 @@ namespace Sandbox.Tools
 
 			if ( blueprintComponent.Placeable ) {
 				blueprintComponent.Place();
+				_currentBlueprint = null;
 			}
-
-			_currentBlueprint = null;
 		}
 
 		public override void Attack2()
