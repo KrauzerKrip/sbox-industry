@@ -1,5 +1,5 @@
 {
-  "__guid": "f6f03a01-bc19-485e-a208-087308074ad9",
+  "__guid": "2a894cf2-4662-43ce-8b79-5d6c46b7bd24",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -121,6 +121,14 @@
           "IsMachineMenuOpened": false,
           "JumpStrength": 400,
           "RunSpeed": 300,
+          "Tools": [
+            {
+              "_type": "component",
+              "component_id": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
+              "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
+              "component_type": "BlueprintTool"
+            }
+          ],
           "WalkSpeed": 200
         }
       ],
@@ -151,6 +159,40 @@
               "ZNear": 10
             }
           ]
+        },
+        {
+          "__guid": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
+          "Flags": 0,
+          "Name": "BlueprintTool",
+          "Position": "15.15253,-0.5217896,41.3501",
+          "Tags": "tool",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7f8e51ef-fdbd-4e51-91f2-67b8bccfa0fd",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/editor/camera.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.Tools.BlueprintTool",
+              "__guid": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
+              "Blueprints": {
+                "heater": {
+                  "_type": "gameobject",
+                  "prefab": "prefabs/heater.prefab"
+                }
+              },
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
+              }
+            }
+          ]
         }
       ]
     },
@@ -172,11 +214,11 @@
         {
           "__type": "Gui",
           "__guid": "c058a801-60b3-4ac8-93b4-c096cd0ea574",
-          "BlueprintSpawner": {
+          "BlueprintTool": {
             "_type": "component",
-            "component_id": "bcb3e563-c9c5-4b39-967f-8a41cd1ef902",
-            "go": "9fa91eb2-9168-4f88-921a-234a8b5470a7",
-            "component_type": "BlueprintSpawner"
+            "component_id": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
+            "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
+            "component_type": "BlueprintTool"
           },
           "PlayerController": {
             "_type": "component",
@@ -188,66 +230,14 @@
       ]
     },
     {
-      "__guid": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
+      "__guid": "1cbaf63d-52d9-47a0-842d-ddf0611af89c",
       "Flags": 0,
       "Name": "Heater",
-      "Position": "-122.1529,-793.6725,382.5682",
-      "Tags": "machine",
+      "Position": "-117.8906,-807.0719,386.1417",
+      "Scale": "0.04155056,0.04694799,0.02971509",
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "6292163f-08ea-4cf8-97cc-c09ddee778af",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/concrete/damage/concrete_damage_edgecaps.vmat",
-          "Model": "models/machines/heater/model.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelPhysics",
-          "__guid": "eae53ac3-0b80-46ea-9a72-968d6d2064a2",
-          "Locking": {},
-          "Model": "models/machines/heater/model.vmdl",
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0
-        },
-        {
-          "__type": "Blueprint",
-          "__guid": "8eae9b62-079d-49f2-be27-4c68c3fa04a7",
-          "ModelRenderer": {
-            "_type": "component",
-            "component_id": "6292163f-08ea-4cf8-97cc-c09ddee778af",
-            "go": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
-            "component_type": "ModelRenderer"
-          },
-          "Physics": {
-            "_type": "component",
-            "component_id": "eae53ac3-0b80-46ea-9a72-968d6d2064a2",
-            "go": "525f4c53-e868-4c53-8b11-01c221f7d6f7",
-            "component_type": "ModelPhysics"
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "9fa91eb2-9168-4f88-921a-234a8b5470a7",
-      "Flags": 0,
-      "Name": "BlueprintSpawner",
-      "Position": "-466.8031,-872.5351,378.0072",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "BlueprintSpawner",
-          "__guid": "bcb3e563-c9c5-4b39-967f-8a41cd1ef902",
-          "Blueprints": {
-            "heater": {
-              "_type": "gameobject",
-              "prefab": "prefabs/heater.prefab"
-            }
-          }
-        }
-      ]
+      "__Prefab": "prefabs/heater.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

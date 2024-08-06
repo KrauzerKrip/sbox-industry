@@ -2,7 +2,7 @@ using Sandbox;
 using Sandbox.Citizen;
 using System.Numerics;
 
-public sealed class PlayerController : Component
+public sealed partial class PlayerController : Component
 {
 	[Property]
 	[Category( "Components" )]
@@ -65,6 +65,35 @@ public sealed class PlayerController : Component
 			IsMachineMenuOpened = !IsMachineMenuOpened;
 		}
 
+		if (Input.Pressed( "attack1" ) )
+		{
+			GetCurrentTool().Attack1();
+		}
+
+		if ( Input.Pressed( "attack2" ) )
+		{
+			GetCurrentTool().Attack2();
+		}
+
+		if ( Input.Pressed( "reload" ) )
+		{
+			GetCurrentTool().Reload();
+		}
+
+		if ( Input.Pressed( "Slot0" ) )
+		{
+			SetToolIndex( 0 );
+		}
+		if ( Input.Pressed( "Slot1" ) )
+		{
+			SetToolIndex( 1 );
+		}
+		if ( Input.Pressed( "Slot2" ) )
+		{
+			SetToolIndex( 2 );
+		}
+
+
 		var wishVelocity = Input.AnalogMove * moveSpeed * Transform.Rotation;
 
 		CharacterController.Accelerate( wishVelocity );
@@ -83,6 +112,8 @@ public sealed class PlayerController : Component
 		{
 			CharacterController.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}
+
+		
 
 		CharacterController.Move();
 

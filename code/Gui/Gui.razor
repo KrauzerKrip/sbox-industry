@@ -1,12 +1,17 @@
 @using Sandbox;
+@using Sandbox.Tools
 @using Sandbox.UI;
 @using Sandbox.Machines;
 @inherits PanelComponent
 
 <root>
+	<div class="tool">
+		<h3>@PlayerController.GetCurrentTool().Name</h3>
+	</div>
+
 	@if (PlayerController.IsMachineMenuOpened)
 	{
-		<MachineMenu PlayerController=@PlayerController BlueprintSpawner=@BlueprintSpawner></MachineMenu> 
+		<MachineMenu PlayerController=@PlayerController BlueprintTool=@BlueprintTool></MachineMenu> 
 	}
 </root>
 
@@ -15,7 +20,7 @@
 	[Property]
 	public PlayerController PlayerController { get; set; }
 	[Property]
-	public BlueprintSpawner BlueprintSpawner { get; set; }
+	public BlueprintTool BlueprintTool { get; set; }
 
 	protected override int BuildHash()
 	{

@@ -24,7 +24,7 @@ COMMON
 	#define S_ALPHA_TEST 0
 	#endif
 	#ifndef S_TRANSLUCENT
-	#define S_TRANSLUCENT 0
+	#define S_TRANSLUCENT 1
 	#endif
 	
 	#include "common/shared.hlsl"
@@ -86,11 +86,11 @@ PS
 		m.Emission = float3( 0, 0, 0 );
 		m.Transmission = 0;
 		
-		float4 l_0 = float4( 0, 0.38333344, 1, 1 );
+		float4 l_0 = float4( 0.254902, 0.41176474, 0.88235295, 1 );
 		
 		m.Albedo = l_0.xyz;
-		m.Opacity = 0.7248218;
-		m.Roughness = 0;
+		m.Opacity = 0.75085044;
+		m.Roughness = 1;
 		m.Metalness = 0;
 		m.AmbientOcclusion = 1;
 		

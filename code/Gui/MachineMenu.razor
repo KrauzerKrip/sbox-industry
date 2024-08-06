@@ -1,10 +1,11 @@
 ﻿@using Sandbox.Machines
+@using Sandbox.Tools
 <root>
 	<div class="machine-menu">
 		<div class="machine-menu-grid-container">
-			@foreach(string machineName in BlueprintSpawner.Blueprints.Keys)
+			@foreach(string machineName in BlueprintTool.Blueprints.Keys)
 			{
-				_currentMachine = machineName;
+				_currentBlueprint = machineName;
 				<div onmousedown="@SpawnBlueprint">
 					<h4>@machineName</h4>
 				</div>
@@ -16,15 +17,17 @@
 @code {
 	private void SpawnBlueprint()
 	{
-		if (_currentMachine == null)
+		if (_currentBlueprint == null)
 		{
 			return;
 		}
 
-		BlueprintSpawner.SpawnOnRay(_currentMachine, PlayerController.AimRay);
+		PlayerController.IsMachineMenuOpened = false;
+
+		BlueprintTool.SpawnBlueprint(_currentBlueprint);
 	}
 
-	private string _currentMachine;
+	private string _currentBlueprint;
 	public PlayerController PlayerController { get; set; }
-	public BlueprintSpawner BlueprintSpawner { get; set; }
+	public BlueprintTool BlueprintTool { get; set; }
 }

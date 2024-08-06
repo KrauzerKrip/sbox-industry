@@ -26,4 +26,10 @@ Gui {
 	.machine-menu-grid-container {
 		display: flex;
 	}
+
+	.tool {
+		position: absolute;
+		top: 250px;
+		right: 400px;
+	}
 }
