@@ -18,6 +18,9 @@ public sealed class Blueprint : Component
 	[Property]
 	[Category("Components")]
 	public ModelCollider Collider { get; set; }
+	[Property]
+	[Category("Components")]
+	public HighlightOutline Outline { get; set; }
 	public GameObject Owner { get; set; }
 	public string Name { get; set; }
 	public bool Buildable { get; private set; } = false;
@@ -37,6 +40,8 @@ public sealed class Blueprint : Component
 		Physics.Enabled = true;
 		Collider.IsTrigger = true;
 
+		Tags.Add( "blueprint" );
+
 		base.OnStart();
 	}
 
@@ -44,6 +49,8 @@ public sealed class Blueprint : Component
 	{
 		Placeable = true;
 		Buildable = true;
+
+		DisableOutline();
 
 		foreach ( Collider col in Collider.Touching )
 		{
@@ -66,11 +73,21 @@ public sealed class Blueprint : Component
 		}
 
 		base.OnFixedUpdate();
-	}
+	} 
 
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
+	}
+
+	public void EnableOutline()
+	{
+		Outline.Enabled = true;
+	}
+
+	public void DisableOutline()
+	{
+		Outline.Enabled = false;
 	}
 
 	public void Place()

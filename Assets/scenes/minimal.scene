@@ -166,6 +166,10 @@
               "Viewport": "0,0,1,1",
               "ZFar": 10000,
               "ZNear": 10
+            },
+            {
+              "__type": "Sandbox.Highlight",
+              "__guid": "ae3c4b49-d132-4b63-b3bb-9bcea5fcdcc6"
             }
           ]
         },
@@ -244,6 +248,7 @@
       "Name": "Heater",
       "Position": "-117.8906,-807.0719,386.1417",
       "Scale": "0.04155056,0.04694799,0.02971509",
+      "Tags": "blueprint",
       "Enabled": true,
       "Components": [
         {
@@ -261,7 +266,7 @@
           "Name": "Heater itself",
           "Position": "-47.2994,285.4098,1334.508",
           "Scale": "24.06707,21.30017,33.65294",
-          "Tags": "machine",
+          "Tags": "machine,blueprint",
           "Enabled": true,
           "Components": [
             {
@@ -291,6 +296,12 @@
                 "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
                 "component_type": "ModelCollider"
               },
+              "Outline": {
+                "_type": "component",
+                "component_id": "2881e3dc-813b-412f-96fc-252fa867cf90",
+                "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+                "component_type": "HighlightOutline"
+              },
               "Physics": {
                 "_type": "component",
                 "component_id": "c3d43482-5f13-4d79-8553-e47435e77b5a",
@@ -310,6 +321,15 @@
               "IsTrigger": true,
               "Model": "models/machines/heater/model.vmdl",
               "Static": false
+            },
+            {
+              "__type": "Sandbox.HighlightOutline",
+              "__guid": "2881e3dc-813b-412f-96fc-252fa867cf90",
+              "Color": "1,1,1,1",
+              "InsideColor": "0,0,0,0",
+              "InsideObscuredColor": "0,0,0,0",
+              "ObscuredColor": "0,0,0,0.4",
+              "Width": 0.25
             }
           ]
         }

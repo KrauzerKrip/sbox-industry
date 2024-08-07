@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sandbox.Tools
 {
+	enum Mode
+	{
+		Builder,
+		Remover
+	}
+
 	public sealed class BlueprintTool : ToolBase
 	{
 		[Property]
@@ -14,38 +20,87 @@ namespace Sandbox.Tools
 		PlayerController PlayerController { get; set; }
 
 		private GameObject _currentBlueprint;
+		private GameObject _blueprintLookingAt;
+		private Mode _mode;
 
 		public BlueprintTool()
 		{
 			Name = "blueprint_tool";
+			_mode = Mode.Builder;
+			CurrentMode = "Builder";
+			Modes.Add( "Remove", () => {
+				_mode = Mode.Remover;
+				CurrentMode = "Remover";
+				if ( _currentBlueprint != null ) {
+					_currentBlueprint.Destroy();
+					_currentBlueprint = null; };
+			}
+			);
+			Modes.Add( "Build", () => {
+				_mode = Mode.Builder;
+				CurrentMode = "Builder";
+			} ) ;
 		}
 
 		protected override void OnUpdate()
 		{
-			if (_currentBlueprint != null)
+			if ( _currentBlueprint != null )
 			{
-				SceneTraceResult result = Scene.Trace.Ray(PlayerController.AimRay, 1000 ).WithAnyTags( "terrain" ).Run();
+				SceneTraceResult result = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).WithTag( "terrain" ).Run();
 				result.EndPosition.x = (result.EndPosition.x / 10).Floor() * 10;
 				result.EndPosition.y = (result.EndPosition.y / 10).Floor() * 10;
 				result.EndPosition.z = (result.EndPosition.z / 10).Floor() * 10;
 				_currentBlueprint.Transform.Position = result.EndPosition;
 			}
 
+			SceneTraceResult resultBlueprints = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).HitTriggers().WithTag( "blueprint" ).Run();
+
+			_blueprintLookingAt = null;
+
+			if ( resultBlueprints.GameObject != null && resultBlueprints.GameObject.IsValid() )
+			{
+
+				if ( resultBlueprints.GameObject.Components.TryGet( out Blueprint blueprint ) )
+				{
+					_blueprintLookingAt = resultBlueprints.GameObject;
+					blueprint.EnableOutline();
+				}
+				else
+				{
+					throw new Exception( "A GameObject with the tag 'blueprint' doesn't have Blueprint component." );
+				}
+			}
+
 			base.OnUpdate();
 		}
 
+		public override void Equip()
+		{
+			_mode = Mode.Builder;
+			CurrentMode = "Builder";
+		}
 		public override void Attack1()
 		{
-			Blueprint blueprintComponent = _currentBlueprint.Components.GetInChildrenOrSelf<Blueprint>();
-
-			if (blueprintComponent == null)
+			if (_currentBlueprint == null)
 			{
-				throw new Exception( "Blueprint Tool: current blueprint object doesn't have Blueprint component." );
-			}
+				if (_mode == Mode.Remover && _blueprintLookingAt != null)
+				{
+					_blueprintLookingAt.Destroy();
+				}
+			} else
+			{
+				Blueprint blueprintComponent = _currentBlueprint.Components.GetInChildrenOrSelf<Blueprint>();
 
-			if ( blueprintComponent.Placeable ) {
-				blueprintComponent.Place();
-				_currentBlueprint = null;
+				if ( blueprintComponent == null )
+				{
+					throw new Exception( "Blueprint Tool: current blueprint object doesn't have Blueprint component." );
+				}
+
+				if ( blueprintComponent.Placeable )
+				{
+					blueprintComponent.Place();
+					_currentBlueprint = null;
+				}
 			}
 		}
 

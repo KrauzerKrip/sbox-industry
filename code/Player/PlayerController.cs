@@ -69,15 +69,28 @@ public sealed partial class PlayerController : Component
 		{
 			GetCurrentTool().Attack1();
 		}
-
 		if ( Input.Pressed( "attack2" ) )
 		{
 			GetCurrentTool().Attack2();
 		}
-
 		if ( Input.Pressed( "reload" ) )
 		{
 			GetCurrentTool().Reload();
+		}
+
+		if (Input.Pressed( "Build") )
+		{
+			if (GetCurrentTool().Modes.TryGetValue( "Build", out System.Action action ) )
+			{
+				action();
+			}
+		}
+		if ( Input.Pressed( "Remove" ) )
+		{
+			if ( GetCurrentTool().Modes.TryGetValue( "Remove", out System.Action action ) )
+			{
+				action();
+			}
 		}
 
 		if ( Input.Pressed( "Slot0" ) )
