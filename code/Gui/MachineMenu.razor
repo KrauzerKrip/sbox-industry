@@ -2,14 +2,16 @@
 @using Sandbox.Tools
 <root>
 	<div class="machine-menu">
-		<div class="machine-menu-grid-container">
-			@foreach(string machineName in BlueprintTool.Blueprints.Keys)
-			{
-				_currentBlueprint = machineName;
-				<div onmousedown="@SpawnBlueprint">
-					<h4>@machineName</h4>
-				</div>
-			}
+		<div class="machine-menu-container">
+			<div class="machine-menu-row">
+				@foreach(string machineName in BlueprintTool.Blueprints.Keys)
+				{
+					_currentBlueprint = machineName;
+					<div class="machine-slot" onclick="@SpawnBlueprint">
+						<h4>@machineName</h4>
+					</div>
+				}
+			</div>
 		</div
 	</div>
 </root>
