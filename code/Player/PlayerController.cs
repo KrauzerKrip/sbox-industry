@@ -88,6 +88,7 @@ public sealed partial class PlayerController : Component
 		if ( Input.Pressed( "use" ) )
 		{
 			TryLoadResourceIntoInventory();
+			TryUseMachine();
 		}
 
 		if (Input.Pressed( "Build") )

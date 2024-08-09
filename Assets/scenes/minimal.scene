@@ -1,5 +1,5 @@
 {
-  "__guid": "2467fd9e-3326-4826-bb74-978635ba3a6f",
+  "__guid": "7be140ae-f5f3-472e-9147-f8ae410ac888",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -218,45 +218,85 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "__guid": "58b870df-93d1-48d3-bc17-aaa5aa3531b0",
-      "Flags": 0,
-      "Name": "Screen",
-      "Position": "-367.9025,-563.5339,374.5605",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "616380c6-169a-4b6f-b053-143d63788a19",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 100
         },
         {
-          "__type": "Gui",
-          "__guid": "c058a801-60b3-4ac8-93b4-c096cd0ea574",
-          "BlueprintTool": {
-            "_type": "component",
-            "component_id": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
-            "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
-            "component_type": "BlueprintTool"
-          },
-          "Inventory": {
-            "_type": "component",
-            "component_id": "097dc296-7a10-48a5-8cc5-d58744910c95",
-            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
-            "component_type": "Inventory"
-          },
-          "PlayerController": {
-            "_type": "component",
-            "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
-            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
-            "component_type": "PlayerController"
-          }
+          "__guid": "58b870df-93d1-48d3-bc17-aaa5aa3531b0",
+          "Flags": 0,
+          "Name": "Main GUI",
+          "Position": "-0.08398438,130.9545,15.93338",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "616380c6-169a-4b6f-b053-143d63788a19",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "Gui",
+              "__guid": "c058a801-60b3-4ac8-93b4-c096cd0ea574",
+              "BlueprintTool": {
+                "_type": "component",
+                "component_id": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
+                "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
+                "component_type": "BlueprintTool"
+              },
+              "Inventory": {
+                "_type": "component",
+                "component_id": "097dc296-7a10-48a5-8cc5-d58744910c95",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "Inventory"
+              },
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "6201f4b2-19fd-4da1-b5f8-4ebcea8a2dac",
+          "Flags": 0,
+          "Name": "Heater GUI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "1bbc4a8c-a0d6-4ef5-a611-4a2f37da6176",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "HeaterGui",
+              "__guid": "4dfdc135-c197-4d66-b6f0-58db798894bf"
+            }
+          ]
+        },
+        {
+          "__guid": "babd9af0-6469-4c38-968e-2d67a84500fd",
+          "Flags": 0,
+          "Name": "Heater GUI Controller",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Gui.Controllers.HeaterGuiController",
+              "__guid": "3334d94f-bbcb-4361-bbd7-fab18a07f82a",
+              "HeaterGui": {
+                "_type": "component",
+                "component_id": "4dfdc135-c197-4d66-b6f0-58db798894bf",
+                "go": "6201f4b2-19fd-4da1-b5f8-4ebcea8a2dac",
+                "component_type": "HeaterGui"
+              }
+            }
+          ]
         }
       ]
     },
@@ -266,7 +306,6 @@
       "Name": "Heater",
       "Position": "-117.8906,-807.0719,386.1417",
       "Scale": "0.04155056,0.04694799,0.02971509",
-      "Tags": "blueprint",
       "Enabled": true,
       "Components": [
         {
@@ -299,7 +338,6 @@
             {
               "__type": "Sandbox.ModelPhysics",
               "__guid": "c3d43482-5f13-4d79-8553-e47435e77b5a",
-              "__enabled": false,
               "Locking": {},
               "Model": "models/machines/heater/model.vmdl",
               "MotionEnabled": true,
@@ -308,6 +346,7 @@
             {
               "__type": "Blueprint",
               "__guid": "e6aa1f32-fe33-4a75-900a-d49a1c351148",
+              "__enabled": false,
               "Collider": {
                 "_type": "component",
                 "component_id": "edde606b-283b-4318-ae7e-bffba87ee7fa",
@@ -348,6 +387,16 @@
               "InsideObscuredColor": "0,0,0,0",
               "ObscuredColor": "0,0,0,0.4",
               "Width": 0.25
+            },
+            {
+              "__type": "Sandbox.Machines.EveryMachine.Heater",
+              "__guid": "0607244a-fce3-434f-9c2f-a614cdfa36cb",
+              "Subscriber": {
+                "_type": "component",
+                "component_id": "3334d94f-bbcb-4361-bbd7-fab18a07f82a",
+                "go": "babd9af0-6469-4c38-968e-2d67a84500fd",
+                "component_type": "HeaterGuiController"
+              }
             }
           ]
         }

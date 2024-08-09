@@ -1,0 +1,30 @@
+@using System
+@using Sandbox.Tools
+@inherits PanelComponent
+
+<root>
+	@if (Show) {
+		<div class="container">
+			<div class="top-container">
+				<h1>100 °C</h1>
+			</div>
+			<div class="middle-container">
+				<div></div>
+				<h1>228 J/S</h1>
+			</div>
+			<div class="bottom-container">
+				<div></div>
+			</div>
+		</div>
+	}
+</root>
+
+@code {
+	public bool Show { get; set; }
+	public float FuelMass { get; set; }
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(FuelMass, Show);
+	}
+}
