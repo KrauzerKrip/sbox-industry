@@ -53,16 +53,16 @@ namespace Sandbox.Tools
 				_currentBlueprint.Transform.Position = result.EndPosition;
 			}
 
-			SceneTraceResult resultBlueprints = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).HitTriggers().WithTag( "blueprint" ).Run();
+			SceneTraceResult resultBlueprint = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).HitTriggers().WithTag( "blueprint" ).Run();
 
 			_blueprintLookingAt = null;
 
-			if ( resultBlueprints.GameObject != null && resultBlueprints.GameObject.IsValid() )
+			if ( resultBlueprint.GameObject != null && resultBlueprint.GameObject.IsValid() )
 			{
 
-				if ( resultBlueprints.GameObject.Components.TryGet( out Blueprint blueprint ) )
+				if ( resultBlueprint.GameObject.Components.TryGet( out Blueprint blueprint ) )
 				{
-					_blueprintLookingAt = resultBlueprints.GameObject;
+					_blueprintLookingAt = resultBlueprint.GameObject;
 					blueprint.EnableOutline();
 				}
 				else

@@ -222,6 +222,12 @@
           "KeyboardCode": "B",
           "GamepadCode": "None",
           "GroupName": "Other"
+        },
+        {
+          "Name": "Inventory",
+          "KeyboardCode": "TAB",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "e23aa215-c65b-421d-bdec-2ba5f8d1de4f"

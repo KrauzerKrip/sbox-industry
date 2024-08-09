@@ -63,6 +63,7 @@ public sealed partial class PlayerController : Component
 		if (Input.Pressed("Menu"))
 		{
 			IsMachineMenuOpened = !IsMachineMenuOpened;
+			IsInventoryOpened = false;
 		}
 
 		if (Input.Pressed( "attack1" ) )
@@ -76,6 +77,17 @@ public sealed partial class PlayerController : Component
 		if ( Input.Pressed( "reload" ) )
 		{
 			GetCurrentTool().Reload();
+		}
+
+		if ( Input.Pressed( "Inventory" ) )
+		{
+			IsInventoryOpened = !IsInventoryOpened;
+			IsMachineMenuOpened = false;
+		}
+		
+		if ( Input.Pressed( "use" ) )
+		{
+			TryLoadResourceIntoInventory();
 		}
 
 		if (Input.Pressed( "Build") )

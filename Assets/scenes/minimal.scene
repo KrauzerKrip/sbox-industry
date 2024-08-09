@@ -1,5 +1,5 @@
 {
-  "__guid": "2a894cf2-4662-43ce-8b79-5d6c46b7bd24",
+  "__guid": "2467fd9e-3326-4826-bb74-978635ba3a6f",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -118,6 +118,12 @@
             "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
             "component_type": "CitizenAnimationHelper"
           },
+          "Inventory": {
+            "_type": "component",
+            "component_id": "097dc296-7a10-48a5-8cc5-d58744910c95",
+            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+            "component_type": "Inventory"
+          },
           "IsMachineMenuOpened": false,
           "JumpStrength": 400,
           "RunSpeed": 300,
@@ -139,6 +145,12 @@
           "Radius": 9.91673,
           "Start": "0,0,8.094833",
           "Static": false
+        },
+        {
+          "__type": "Inventory",
+          "__guid": "097dc296-7a10-48a5-8cc5-d58744910c95",
+          "MaxMass": 100,
+          "MaxSlots": 9
         }
       ],
       "Children": [
@@ -233,6 +245,12 @@
             "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
             "component_type": "BlueprintTool"
           },
+          "Inventory": {
+            "_type": "component",
+            "component_id": "097dc296-7a10-48a5-8cc5-d58744910c95",
+            "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+            "component_type": "Inventory"
+          },
           "PlayerController": {
             "_type": "component",
             "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
@@ -266,7 +284,7 @@
           "Name": "Heater itself",
           "Position": "-47.2994,285.4098,1334.508",
           "Scale": "24.06707,21.30017,33.65294",
-          "Tags": "machine,blueprint",
+          "Tags": "machine",
           "Enabled": true,
           "Components": [
             {
@@ -332,6 +350,58 @@
               "Width": 0.25
             }
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "8a0973b7-51e2-4f9f-bcdc-b95f29bdbe32",
+      "Flags": 0,
+      "Name": "WoodResourceCrate",
+      "Position": "-253.1511,-437.6813,357.1041",
+      "Tags": "resource_crate",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "0ddd440c-9b6f-4150-af19-f2146cc45656",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/citizen_props/crate01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "dc16dc83-5529-4f0c-8eba-aa94b55d8879",
+          "Locking": {},
+          "Model": "models/citizen_props/crate01.vmdl",
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "ResourceCrate",
+          "__guid": "a35240e6-f04a-4c3e-93cb-6115793aee3c",
+          "Mass": 25,
+          "Resource": {
+            "_type": "component",
+            "component_id": "e6372d1d-3f34-4eaf-aaaf-ec1c67ba76e1",
+            "go": "82dd06ea-453c-49e2-83b3-304ce66fcecc",
+            "component_type": "ResourceBase"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "82dd06ea-453c-49e2-83b3-304ce66fcecc",
+      "Flags": 0,
+      "Name": "WoodResource",
+      "Position": "38.85205,-174.52,412.8892",
+      "Tags": "resource",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ResourceBase",
+          "__guid": "e6372d1d-3f34-4eaf-aaaf-ec1c67ba76e1",
+          "Name": "wood"
         }
       ]
     }

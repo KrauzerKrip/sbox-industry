@@ -1,0 +1,50 @@
+﻿@using Sandbox.Machines
+@using Sandbox.Tools
+
+<root>
+	<div class="inventory">
+		<div class="inventory-container">
+			@{int resIndex = 0;}
+			@for (int row = 0; row < 999; row++)
+			{
+				@{
+					bool shouldStop = false;
+
+					if (Inventory.Resources.Count == 0)
+					{
+						break;
+					}
+				}
+				<div class="inventory-row">
+					@for (int col = 0; col < 9; col++)
+					{
+						if (resIndex >= Inventory.Resources.Count)
+						{
+							shouldStop = true;
+							break;
+						}
+						@{
+							string key = Inventory.Resources.Keys.ToList()[resIndex];
+						}
+
+						<div class="inventory-slot">
+							<h4>@key (@Inventory.Resources[key])</h4>
+						</div>
+
+						resIndex++;
+					}
+				</div>
+
+				@if(shouldStop)
+				{
+					break;
+				}
+			}
+		</div>
+	</div>
+</root>
+
+@code {
+	public PlayerController PlayerController { get; set; }
+	public Inventory Inventory { get; set; }
+}
