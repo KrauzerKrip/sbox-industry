@@ -10,11 +10,11 @@ namespace Sandbox.Machines
 
 		public bool IsInventorySufficient(Inventory inventory)
 		{
-			foreach (var (res, mass) in Ingredients)
+			foreach (var (res, requiredMass) in Ingredients)
 			{
-				if (inventory.Resources.TryGetValue(res, out float requiredMass))
+				if (inventory.Resources.TryGetValue(res, out float mass))
 				{
-					if ( mass <= requiredMass ) {
+					if ( mass < requiredMass ) {
 						return false;
 					}
 				} else

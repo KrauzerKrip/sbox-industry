@@ -117,6 +117,11 @@ public sealed class Blueprint : Component
 				Inventory.Resources[reqRes] = 0;
 			}
 		}
+
+		if (Recipe.IsInventorySufficient( Inventory ))
+		{
+			Build();
+		}
 	}
 
 	public void Place()
@@ -127,5 +132,18 @@ public sealed class Blueprint : Component
 		}
 
 		Buildable = true;
+	}
+
+	public void Build()
+	{
+		if ( Buildable ) {
+			Enabled = false;
+			Tags.Remove( "blueprint" );
+			Tags.Add( "machine" );
+			DisableOutline();
+			Physics.Enabled = true;
+			Collider.IsTrigger = false;
+			Renderer.ClearMaterialOverrides();
+		}
 	}
 }
