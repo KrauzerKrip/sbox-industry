@@ -28,6 +28,9 @@ public sealed partial class PlayerController : Component
 	[Property]
 	[Category( "Controls" )]
 	public bool IsMachineMenuOpened { get; set; } = false;
+	[Property]
+	[Category( "Controls" )]
+	public bool IsFreezed { get; set; } = false;
 
 	public Angles EyeAngles { get; set; }
 
@@ -41,9 +44,12 @@ public sealed partial class PlayerController : Component
 
 	protected override void OnUpdate()
 	{
-		EyeAngles += Input.AnalogLook;
-		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-		Camera.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw ) * Rotation.FromPitch( EyeAngles.pitch.Clamp( -90f, 90f ) );
+		if ( !IsFreezed )
+		{
+			EyeAngles += Input.AnalogLook;
+			Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+			Camera.Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw ) * Rotation.FromPitch( EyeAngles.pitch.Clamp( -90f, 90f ) );
+		}
 	}
 
 	protected override void OnFixedUpdate()
@@ -64,6 +70,7 @@ public sealed partial class PlayerController : Component
 		{
 			IsMachineMenuOpened = !IsMachineMenuOpened;
 			IsInventoryOpened = false;
+			OnHideMachineGui();
 		}
 
 		if (Input.Pressed( "attack1" ) )
@@ -83,12 +90,23 @@ public sealed partial class PlayerController : Component
 		{
 			IsInventoryOpened = !IsInventoryOpened;
 			IsMachineMenuOpened = false;
+			OnHideMachineGui();
 		}
 		
 		if ( Input.Pressed( "use" ) )
 		{
 			TryLoadResourceIntoInventory();
-			TryUseMachine();
+			bool wasMachineGuiOpened = false;
+			if ( IsMachineGuiOpened )
+			{
+				wasMachineGuiOpened = true;
+				OnHideMachineGui();
+			}
+
+			if ( !wasMachineGuiOpened )
+			{
+				TryUseMachine();
+			}
 		}
 
 		if (Input.Pressed( "Build") )
@@ -120,26 +138,38 @@ public sealed partial class PlayerController : Component
 		}
 
 
-		var wishVelocity = Input.AnalogMove * moveSpeed * Transform.Rotation;
-
-		CharacterController.Accelerate( wishVelocity );
-		if ( CharacterController.IsOnGround )
+		if ( IsFreezed )
 		{
-			CharacterController.ApplyFriction( 5f );
-
-			if (Input.Pressed( "Jump" ))
+			if ( CharacterController.IsOnGround )
 			{
-				CharacterController.Punch( Vector3.Up * JumpStrength );
+				CharacterController.ApplyFriction( 5f );
+			}
+			else
+			{
+				CharacterController.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+			}
+		} else
+		{
 
-				CitizenAnimationHelper.TriggerJump();
+			var wishVelocity = Input.AnalogMove * moveSpeed * Transform.Rotation;
+
+			CharacterController.Accelerate( wishVelocity );
+			if ( CharacterController.IsOnGround )
+			{
+				CharacterController.ApplyFriction( 5f );
+
+				if ( Input.Pressed( "Jump" ) )
+				{
+					CharacterController.Punch( Vector3.Up * JumpStrength );
+
+					CitizenAnimationHelper.TriggerJump();
+				}
+			}
+			else
+			{
+				CharacterController.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 			}
 		}
-		else
-		{
-			CharacterController.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
-		}
-
-		
 
 		CharacterController.Move();
 

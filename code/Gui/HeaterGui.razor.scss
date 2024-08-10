@@ -18,19 +18,20 @@ HeaterGui {
 	.container {
 		display: flex;
 		flex-direction: column;
+		background-color: #686D76;
 	}
 
 	.top-container {
 		justify-content: center;
-
 	}
 
 	.middle-container {
+		justify-content: center;
 		display: flex;
 		flex-direction: row;
 	}
 
 	.bottom-container {
-
+		justify-content: center;
 	}
 }

@@ -10,6 +10,8 @@ namespace Sandbox.Gui.Controllers
 {
 	public abstract class MachineGuiController : MachineSubscriber
 	{
+		public bool IsShown { get; protected set; } = false;
+
 		public MachineGuiController()
 		{
 		}
@@ -22,9 +24,15 @@ namespace Sandbox.Gui.Controllers
 				throw new ComponentException( "Machine " + machineObject.Name + " doesn't have MachineBase component." );
 			}
 
-			machineComponent.OnUse += ShowGuiForMachine;
+			machineComponent.OnUse += (GameObject user, GameObject machine) => {
+				if ( !IsShown )
+				{
+					ShowMachineGui( user, machine );
+				}
+			};
 		}
 
-		protected abstract void ShowGuiForMachine( GameObject machineObject );
+		protected abstract void ShowMachineGui( GameObject user, GameObject machine );
+		protected abstract void HideMachineGui( GameObject user, GameObject machine );
 	}
 }

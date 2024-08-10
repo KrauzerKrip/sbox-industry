@@ -13,7 +13,7 @@ namespace Sandbox.Machines
 
 		public GameObject Owner { get; set; }
 		public string Name { get; set; }
-		public delegate void UseHandler( GameObject user );
+		public delegate void UseHandler( GameObject user, GameObject machine );
 		public event UseHandler OnUse;
 
 		protected override void OnStart()
@@ -24,7 +24,7 @@ namespace Sandbox.Machines
 
 		public virtual void Use( GameObject user )
 		{
-			OnUse( user );
+			OnUse( user, GameObject );
 		}
 	}
 }

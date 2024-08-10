@@ -13,7 +13,9 @@
 				<h1>228 J/S</h1>
 			</div>
 			<div class="bottom-container">
-				<div></div>
+				<div class="fuel-icon-container">
+					<img src=@FuelIconPath/>
+				</div>
 			</div>
 		</div>
 	}
@@ -22,6 +24,7 @@
 @code {
 	public bool Show { get; set; }
 	public float FuelMass { get; set; }
+	public string FuelIconPath { get; set; }
 
 	protected override int BuildHash()
 	{

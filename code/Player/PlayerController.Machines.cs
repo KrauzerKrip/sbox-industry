@@ -8,6 +8,10 @@ using Sandbox.Machines;
 
 public partial class PlayerController
 {
+	public delegate void HideMachineGuiHandler( );
+	public event HideMachineGuiHandler OnHideMachineGui;
+	public bool IsMachineGuiOpened { get; set; }
+
 	public void TryUseMachine()
 	{
 		SceneTraceResult result = Scene.Trace.Ray( AimRay, 1000 ).WithTag( "machine" ).Run();
@@ -20,7 +24,7 @@ public partial class PlayerController
 				throw new ComponentException("Machine " +  result.GameObject.Name + " doesn't have MachineBase component.");
 			}
 
-			machineBase.Use( result.GameObject );
+			machineBase.Use( GameObject );
 		}
 	}
 }
