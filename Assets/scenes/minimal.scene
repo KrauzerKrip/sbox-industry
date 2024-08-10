@@ -124,6 +124,7 @@
             "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
             "component_type": "Inventory"
           },
+          "IsFreezed": false,
           "IsMachineMenuOpened": false,
           "JumpStrength": 400,
           "RunSpeed": 300,
@@ -365,6 +366,12 @@
                 "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
                 "component_type": "ModelPhysics"
               },
+              "Recipe": {
+                "_type": "component",
+                "component_id": "23cb4896-ba52-4bb2-b736-fad5d90f3e03",
+                "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+                "component_type": "Recipe"
+              },
               "Renderer": {
                 "_type": "component",
                 "component_id": "09177630-1507-467e-8882-19d415da0205",
@@ -396,6 +403,13 @@
                 "component_id": "3334d94f-bbcb-4361-bbd7-fab18a07f82a",
                 "go": "babd9af0-6469-4c38-968e-2d67a84500fd",
                 "component_type": "HeaterGuiController"
+              }
+            },
+            {
+              "__type": "Sandbox.Machines.Recipe",
+              "__guid": "23cb4896-ba52-4bb2-b736-fad5d90f3e03",
+              "Ingredients": {
+                "wood": 10
               }
             }
           ]
@@ -450,7 +464,8 @@
         {
           "__type": "ResourceBase",
           "__guid": "e6372d1d-3f34-4eaf-aaaf-ec1c67ba76e1",
-          "Name": "wood"
+          "Name": "wood",
+          "Resources": {}
         }
       ]
     }

@@ -4,6 +4,7 @@ using Sandbox.Machines.EveryMachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using static PlayerController;
@@ -64,7 +65,12 @@ namespace Sandbox.Gui.Controllers
 
 		protected override void OnUpdate()
 		{
-			
+			if (_currentHeater == null)
+			{
+				return;
+			}
+
+			HeaterGui.FuelMass = _currentHeater.FuelMass;
 
 			base.OnUpdate();
 		}

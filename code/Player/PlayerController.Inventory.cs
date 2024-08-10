@@ -19,7 +19,7 @@ public partial class PlayerController
 		if ( result.GameObject != null && result.GameObject.IsValid )
 		{
 			ResourceCrate crate = result.GameObject.Components.Get<ResourceCrate>();
-			float loadedMass = Inventory.TryLoadResource( crate.Resource, crate.Mass );
+			float loadedMass = Inventory.TryLoadResource( crate.Resource.Name, crate.Mass );
 			crate.Mass -= loadedMass;
 			Log.Info("Loaded " +  loadedMass + " of " + crate.Resource.Name);
 		}

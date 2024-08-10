@@ -15,7 +15,7 @@ public sealed class Inventory : Component
 
 	public Dictionary<string, float> Resources { get; private set; } = new Dictionary<string, float>();
 
-	public float TryLoadResource(ResourceBase resource, float mass)
+	public float TryLoadResource(string resourceName, float mass)
 	{
 		if ( Resources.Count >= MaxSlots)
 		{
@@ -40,28 +40,28 @@ public sealed class Inventory : Component
 			loaded = canLoad;
 		}
 
-		if (Resources.ContainsKey(resource.Name))
+		if (Resources.ContainsKey(resourceName))
 		{
-			Resources[resource.Name] += loaded;
+			Resources[resourceName] += loaded;
 		} else
 		{
-			Resources[resource.Name] = loaded;
+			Resources[resourceName] = loaded;
 		}
 
 		return loaded;
 	}
 
-	public float TryUnloadResource(ResourceBase resource, float mass)
+	public float TryUnloadResource(string resourceName, float mass)
 	{
-		if ( Resources.TryGetValue(resource.Name, out float resourceMass))
+		if ( Resources.TryGetValue( resourceName, out float resourceMass))
 		{
 			if (mass > resourceMass)
 			{
-				Resources.Remove(resource.Name);
+				Resources.Remove( resourceName );
 				return resourceMass;
 			} else
 			{
-				Resources[resource.Name] -= mass;
+				Resources[resourceName] -= mass;
 				return mass;
 			}
 		} else

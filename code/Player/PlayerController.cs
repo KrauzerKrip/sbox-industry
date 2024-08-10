@@ -66,7 +66,7 @@ public sealed partial class PlayerController : Component
 			moveSpeed = WalkSpeed;
 		}
 
-		if (Input.Pressed("Menu"))
+		if (Input.Pressed( "Menu" ))
 		{
 			IsMachineMenuOpened = !IsMachineMenuOpened;
 			IsInventoryOpened = false;
@@ -107,6 +107,8 @@ public sealed partial class PlayerController : Component
 			{
 				TryUseMachine();
 			}
+
+			TryUseBlueprint();
 		}
 
 		if (Input.Pressed( "Build") )

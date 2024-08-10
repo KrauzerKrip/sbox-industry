@@ -5,7 +5,6 @@
     "Name": "Heater",
     "Position": "-117.8906,-807.0719,386.1417",
     "Scale": "0.04155056,0.04694799,0.02971509",
-    "Tags": "blueprint",
     "Enabled": true,
     "Components": [
       {
@@ -23,7 +22,7 @@
         "Name": "Heater itself",
         "Position": "-47.2994,285.4098,1334.508",
         "Scale": "24.06707,21.30017,33.65294",
-        "Tags": "machine,blueprint",
+        "Tags": "machine",
         "Enabled": true,
         "Components": [
           {
@@ -38,7 +37,6 @@
           {
             "__type": "Sandbox.ModelPhysics",
             "__guid": "c3d43482-5f13-4d79-8553-e47435e77b5a",
-            "__enabled": false,
             "Locking": {},
             "Model": "models/machines/heater/model.vmdl",
             "MotionEnabled": true,
@@ -53,6 +51,12 @@
               "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
               "component_type": "ModelCollider"
             },
+            "Inventory": {
+              "_type": "component",
+              "component_id": "9cafcabb-4bfe-407b-95ca-e382a407cae7",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+              "component_type": "Inventory"
+            },
             "Outline": {
               "_type": "component",
               "component_id": "2881e3dc-813b-412f-96fc-252fa867cf90",
@@ -64,6 +68,12 @@
               "component_id": "c3d43482-5f13-4d79-8553-e47435e77b5a",
               "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
               "component_type": "ModelPhysics"
+            },
+            "Recipe": {
+              "_type": "component",
+              "component_id": "23cb4896-ba52-4bb2-b736-fad5d90f3e03",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+              "component_type": "Recipe"
             },
             "Renderer": {
               "_type": "component",
@@ -87,6 +97,29 @@
             "InsideObscuredColor": "0,0,0,0",
             "ObscuredColor": "0,0,0,0.4",
             "Width": 0.25
+          },
+          {
+            "__type": "Sandbox.Machines.EveryMachine.Heater",
+            "__guid": "0607244a-fce3-434f-9c2f-a614cdfa36cb",
+            "Subscriber": {
+              "_type": "component",
+              "component_id": "3334d94f-bbcb-4361-bbd7-fab18a07f82a",
+              "go": "babd9af0-6469-4c38-968e-2d67a84500fd",
+              "component_type": "HeaterGuiController"
+            }
+          },
+          {
+            "__type": "Sandbox.Machines.Recipe",
+            "__guid": "23cb4896-ba52-4bb2-b736-fad5d90f3e03",
+            "Ingredients": {
+              "wood": 10
+            }
+          },
+          {
+            "__type": "Inventory",
+            "__guid": "9cafcabb-4bfe-407b-95ca-e382a407cae7",
+            "MaxMass": 100,
+            "MaxSlots": 9
           }
         ]
       }

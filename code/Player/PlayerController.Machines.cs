@@ -18,7 +18,6 @@ public partial class PlayerController
 		if ( result.GameObject != null && result.GameObject.IsValid )
 		{
 			MachineBase machineBase = result.GameObject.Components.Get<MachineBase>();
-
 			if ( machineBase == null )
 			{
 				throw new ComponentException("Machine " +  result.GameObject.Name + " doesn't have MachineBase component.");
