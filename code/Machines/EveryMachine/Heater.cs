@@ -10,5 +10,10 @@ namespace Sandbox.Machines.EveryMachine
 	{
 		public SolidFuel FuelResource { get; private set; }
 		public float FuelMass { get; private set; }
+
+		protected override void OnFixedUpdate()
+		{
+			base.OnFixedUpdate();
+		}
 	}
 }

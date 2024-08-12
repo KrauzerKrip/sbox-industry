@@ -57,6 +57,12 @@
               "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
               "component_type": "Inventory"
             },
+            "MachineBase": {
+              "_type": "component",
+              "component_id": "0607244a-fce3-434f-9c2f-a614cdfa36cb",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+              "component_type": "Heater"
+            },
             "Outline": {
               "_type": "component",
               "component_id": "2881e3dc-813b-412f-96fc-252fa867cf90",
@@ -101,6 +107,22 @@
           {
             "__type": "Sandbox.Machines.EveryMachine.Heater",
             "__guid": "0607244a-fce3-434f-9c2f-a614cdfa36cb",
+            "AcceptableResources": [],
+            "Connectors": [
+              {
+                "_type": "component",
+                "component_id": "6af394e8-b442-42e7-9d8a-5a3bb91832f6",
+                "go": "7aca855e-6d47-4351-b1bb-ac22595d3f85",
+                "component_type": "ResourceConnector"
+              }
+            ],
+            "Inventory": {
+              "_type": "component",
+              "component_id": "9cafcabb-4bfe-407b-95ca-e382a407cae7",
+              "go": "9c573ff8-5e62-4a88-bdfb-ce27b5b7a4ef",
+              "component_type": "Inventory"
+            },
+            "IsAttachment": false,
             "Subscriber": {
               "_type": "component",
               "component_id": "3334d94f-bbcb-4361-bbd7-fab18a07f82a",
@@ -120,6 +142,34 @@
             "__guid": "9cafcabb-4bfe-407b-95ca-e382a407cae7",
             "MaxMass": 100,
             "MaxSlots": 9
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "7aca855e-6d47-4351-b1bb-ac22595d3f85",
+            "Flags": 0,
+            "Name": "Heat Output",
+            "Position": "0.5936431,-37.34295,12.9389",
+            "Scale": "0.1,0.1,0.1",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "3df741b3-470d-44be-abc7-ed94ede53802",
+                "BodyGroups": 18446744073709551615,
+                "RenderType": "On",
+                "Tint": "1,0.46667,0,1"
+              },
+              {
+                "__type": "Sandbox.Machines.ResourceConnector",
+                "__guid": "6af394e8-b442-42e7-9d8a-5a3bb91832f6",
+                "ConnectionType": "Out",
+                "ResourceAmount": 0,
+                "ResourceTypes": [
+                  "heat"
+                ]
+              }
+            ]
           }
         ]
       }

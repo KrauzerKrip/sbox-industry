@@ -1,0 +1,198 @@
+{
+  "RootObject": {
+    "__guid": "8817473d-2d29-46dd-859e-95f9349c36e8",
+    "Flags": 0,
+    "Name": "Pot",
+    "Position": "-224.1005,-982.2266,434.2196",
+    "Rotation": "0,-0,-0.7071068,0.7071068",
+    "Scale": "0.1,0.1,0.1",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "181bec0d-968e-4db2-adaf-56cba5e638f6",
+        "BodyGroups": 18446744073709551615,
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+        "Flags": 0,
+        "Name": "Pot itself",
+        "Position": "0,0,24.91394",
+        "Scale": "10,10,10",
+        "Tags": "machine",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Blueprint",
+            "__guid": "1bb84870-d5e7-4f71-9100-377a2063074e",
+            "Collider": {
+              "_type": "component",
+              "component_id": "7606785c-37c6-462c-9eeb-937ec283fd7d",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "ModelCollider"
+            },
+            "Inventory": {
+              "_type": "component",
+              "component_id": "b1365ad5-18f3-40da-8397-310d3c8f33ce",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "Inventory"
+            },
+            "MachineBase": {
+              "_type": "component",
+              "component_id": "74103d0f-a2ce-42ca-9c7c-c883f99c1669",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "Pot"
+            },
+            "Outline": {
+              "_type": "component",
+              "component_id": "4f94564a-8466-4f81-9a10-951afb9461a5",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "HighlightOutline"
+            },
+            "Physics": {
+              "_type": "component",
+              "component_id": "28c7bc51-fecc-4304-90f5-ec01919c0d29",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "ModelPhysics"
+            },
+            "Recipe": {
+              "_type": "component",
+              "component_id": "f233ceec-a50a-445c-9288-456a0c8f0abc",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "Recipe"
+            },
+            "Renderer": {
+              "_type": "component",
+              "component_id": "6a0e1d79-e4f2-4fbc-bcc4-1e805b93b5a1",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "ModelRenderer"
+            }
+          },
+          {
+            "__type": "Sandbox.HighlightOutline",
+            "__guid": "4f94564a-8466-4f81-9a10-951afb9461a5",
+            "Color": "1,1,1,1",
+            "InsideColor": "0,0,0,0",
+            "InsideObscuredColor": "0,0,0,0",
+            "ObscuredColor": "0,0,0,0.4",
+            "Width": 0.25
+          },
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "6a0e1d79-e4f2-4fbc-bcc4-1e805b93b5a1",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/citizen_props/oldoven.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.ModelPhysics",
+            "__guid": "28c7bc51-fecc-4304-90f5-ec01919c0d29",
+            "Locking": {},
+            "Model": "models/citizen_props/oldoven.vmdl",
+            "MotionEnabled": true,
+            "RigidbodyFlags": 0
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "7606785c-37c6-462c-9eeb-937ec283fd7d",
+            "IsTrigger": false,
+            "Model": "models/citizen_props/oldoven.vmdl",
+            "Static": false
+          },
+          {
+            "__type": "Sandbox.Machines.Recipe",
+            "__guid": "f233ceec-a50a-445c-9288-456a0c8f0abc",
+            "Ingredients": {
+              "wood": 10
+            }
+          },
+          {
+            "__type": "Sandbox.Machines.EveryMachine.Pot",
+            "__guid": "74103d0f-a2ce-42ca-9c7c-c883f99c1669",
+            "AcceptableResources": [
+              "latex"
+            ],
+            "Connectors": [
+              {
+                "_type": "component",
+                "component_id": "b4b95cf0-c7b2-49af-a6f4-3278470a4cfe",
+                "go": "866aa2e7-aa9b-4727-8da0-051bcd1b4796",
+                "component_type": "ResourceConnector"
+              }
+            ],
+            "HeatIn": {
+              "_type": "component",
+              "component_id": "b4b95cf0-c7b2-49af-a6f4-3278470a4cfe",
+              "go": "866aa2e7-aa9b-4727-8da0-051bcd1b4796",
+              "component_type": "ResourceConnector"
+            },
+            "Inventory": {
+              "_type": "component",
+              "component_id": "b1365ad5-18f3-40da-8397-310d3c8f33ce",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "Inventory"
+            },
+            "IsAttachment": true,
+            "OutputInventory": {
+              "_type": "component",
+              "component_id": "94008a0b-2592-41a5-9309-a12ad7f4c3d7",
+              "go": "644c33e5-0841-4a2e-b833-d621e5ef3f4a",
+              "component_type": "Inventory"
+            }
+          },
+          {
+            "__type": "Inventory",
+            "__guid": "b1365ad5-18f3-40da-8397-310d3c8f33ce",
+            "MaxMass": 25,
+            "MaxSlots": 1
+          },
+          {
+            "__type": "Inventory",
+            "__guid": "94008a0b-2592-41a5-9309-a12ad7f4c3d7",
+            "MaxMass": 25,
+            "MaxSlots": 1
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "866aa2e7-aa9b-4727-8da0-051bcd1b4796",
+            "Flags": 0,
+            "Name": "Heat Input",
+            "Position": "0,0,-8.714661",
+            "Scale": "0.1,0.1,0.1",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "bd714361-bf1b-4523-844b-5fa98b69e1d7",
+                "BodyGroups": 18446744073709551615,
+                "RenderType": "On",
+                "Tint": "1,0.35,0,1"
+              },
+              {
+                "__type": "Sandbox.Machines.ResourceConnector",
+                "__guid": "b4b95cf0-c7b2-49af-a6f4-3278470a4cfe",
+                "ConnectionType": "In",
+                "ResourceAmount": 0,
+                "ResourceTypes": [
+                  "heat"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

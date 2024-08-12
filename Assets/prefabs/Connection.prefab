@@ -1,0 +1,21 @@
+{
+  "RootObject": {
+    "__guid": "b05eb83e-1a36-4f27-840d-a3196b87657a",
+    "Flags": 0,
+    "Name": "Connection Object",
+    "Position": "-126.4292,-187.5311,115.5769",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.Machines.ResourceConnection",
+        "__guid": "f12dd552-d7f9-45af-88b4-275a9ccfac40"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

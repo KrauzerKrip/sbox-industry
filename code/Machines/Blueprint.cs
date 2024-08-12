@@ -24,6 +24,8 @@ public sealed class Blueprint : Component
 	public Recipe Recipe { get; set; }
 	[Property, Category( "Components" )]
 	public Inventory Inventory { get; set; }
+	[Property, Category( "Components" )]
+	public MachineBase MachineBase { get; set; }
 
 	public GameObject Owner { get; set; }
 	public string Name { get; set; }
@@ -63,6 +65,12 @@ public sealed class Blueprint : Component
 				Placeable = false;
 				Buildable = false;
 			}
+		}
+
+		if ( MachineBase.IsAttachment && !MachineBase.IsAttached )
+		{
+			Placeable = false;
+			Buildable = false;
 		}
 
 		if ( Placeable && _currentMaterial == BlueprintMaterial.DANGER )
