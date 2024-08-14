@@ -1,9 +1,11 @@
-﻿using Sandbox.Machines;
+﻿using Sandbox.Exceptions;
+using Sandbox.Machines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Sandbox.Tools
 {
@@ -52,7 +54,7 @@ namespace Sandbox.Tools
 				MachineBase machineBase = _currentBlueprint.Components.GetInChildrenOrSelf<MachineBase>();
 				if ( machineBase == null )
 				{
-					throw new Exception( "Current blueprint tool blueprint doesn't have MachineBase component." );
+					throw new ComponentException( "Current blueprint tool blueprint doesn't have MachineBase component." );
 				}
 
 				SceneTraceResult resultTerrain = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).WithTag( "terrain" ).Run();
@@ -63,29 +65,19 @@ namespace Sandbox.Tools
 
 				if ( machineBase.IsAttachment )
 				{
-					SceneTraceResult result = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).WithAnyTags( "machine", "blueprint" ).Run();
+					SceneTraceResult result = Scene.Trace.Ray( PlayerController.AimRay, 1000 ).HitTriggers().WithAnyTags( "machine", "blueprint" ).Run();
 					if ( result.GameObject != null && result.GameObject.IsValid() )
 					{
 						MachineBase otherMachineBase = result.GameObject.Components.GetInChildrenOrSelf<MachineBase>();
 						if (otherMachineBase == null)
 						{
-							throw new Exception( "A GameObject with the tag 'machine' or 'blueprint' doesn't have MachineBase component." );
+							throw new ComponentException( "A GameObject with the tag 'machine' or 'blueprint' doesn't have MachineBase component." );
 						}
 
 						foreach ( ResourceConnector connector in machineBase.Connectors )
 						{
-							if (connector.ResourceConnection != null)
-							{
-								continue;
-							}
-
 							foreach ( ResourceConnector otherConnector in otherMachineBase.Connectors )
 							{
-								if ( otherConnector.ResourceConnection != null )
-								{
-									continue;
-								}
-
 								int connectionDirection = 0;
 								if ( connector.ConnectionType == ConnectionType.In && otherConnector.ConnectionType == ConnectionType.Out )
 								{
@@ -96,10 +88,19 @@ namespace Sandbox.Tools
 									connectionDirection = 2;
 								}
 
+								if ( connector.ResourceConnection != null )
+								{
+									if ( otherConnector.ResourceConnection == connector.ResourceConnection )
+									{
+										continue;
+									}
+								}
+
 								if ( connector.ResourceTypes.SequenceEqual( otherConnector.ResourceTypes ) && connectionDirection != 0 )
 								{
 									GameObject connectionObject = ConnectionObject.Clone();
 									ResourceConnection connection = connectionObject.Components.GetOrCreate<ResourceConnection>();
+
 									if ( connectionDirection == 1 )
 									{
 										connection.ResourceConnectorIn = connector;
@@ -109,6 +110,11 @@ namespace Sandbox.Tools
 									{
 										connection.ResourceConnectorOut = connector;
 										connection.ResourceConnectorIn = otherConnector;
+									}
+
+									if (connector.ResourceConnection != null)
+									{
+										connector.ResourceConnection.GameObject.Destroy();
 									}
 
 									connector.ResourceConnection = connection;
@@ -150,7 +156,7 @@ namespace Sandbox.Tools
 				}
 				else
 				{
-					throw new Exception( "A GameObject with the tag 'blueprint' doesn't have Blueprint component." );
+					throw new ComponentException( "A GameObject with the tag 'blueprint' doesn't have Blueprint component." );
 				}
 			}
 
@@ -168,6 +174,29 @@ namespace Sandbox.Tools
 			{
 				if (_mode == Mode.Remover && _blueprintLookingAt != null)
 				{
+					MachineBase machineBase = _blueprintLookingAt.Components.Get<MachineBase>();
+					if (machineBase == null)
+					{
+						throw new ComponentException( "Blueprint Tool: current blueprint object doesn't have MachineBase component." );
+					}
+
+					foreach (ResourceConnector resourceConnector in machineBase.Connectors)
+					{
+						if ( resourceConnector.ConnectionType == ConnectionType.In)
+						{
+							GameObject otherObj = resourceConnector.ResourceConnection.ResourceConnectorOut.GameObject;
+							MachineBase otherMachineBase = otherObj.Components.Get<MachineBase>();
+							if (otherMachineBase == null)
+							{
+								throw new ComponentException( "Blueprint Tool: other object in the connection doesn't have MachineBase component." );
+							}
+
+
+
+							resourceConnector.ResourceConnection.ResourceConnectorOut.GameObject.Destroy();
+						}
+						resourceConnector.ResourceConnection.Destroy();
+					}
 					_blueprintLookingAt.Destroy();
 				}
 			} else
@@ -176,7 +205,7 @@ namespace Sandbox.Tools
 
 				if ( blueprintComponent == null )
 				{
-					throw new Exception( "Blueprint Tool: current blueprint object doesn't have Blueprint component." );
+					throw new ComponentException( "Blueprint Tool: current blueprint object doesn't have Blueprint component." );
 				}
 
 				if ( blueprintComponent.Placeable )

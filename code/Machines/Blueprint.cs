@@ -73,6 +73,17 @@ public sealed class Blueprint : Component
 			Buildable = false;
 		}
 
+		//if ( MachineBase.IsAttachment ) {
+		//	Buildable = false;
+		//	foreach (ResourceConnector connector in MachineBase.Connectors)
+		//	{
+		//		if (connector.ResourceConnection != null)
+		//		{
+		//			Buildable = true;
+		//		} 
+		//	}
+		//}
+
 		if ( Placeable && _currentMaterial == BlueprintMaterial.DANGER )
 		{
 			Renderer.SetMaterial( _defaultMaterial );

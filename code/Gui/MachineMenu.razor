@@ -6,31 +6,24 @@
 			<div class="machine-menu-row">
 				@foreach(string machineName in BlueprintTool.Blueprints.Keys)
 				{
-					_currentBlueprint = machineName;
-					<div class="machine-slot" onclick="@SpawnBlueprint">
+					<div class="machine-slot" onclick="@( () => SpawnBlueprint(machineName) )">
 						<h4>@machineName</h4>
 					</div>
 				}
 			</div>
-		</div
+		</div>
 	</div>
 </root>
 
 @code {
-	private void SpawnBlueprint()
+	void SpawnBlueprint(string name)
 	{
-		if (_currentBlueprint == null)
-		{
-			return;
-		}
-
 		PlayerController.IsMachineMenuOpened = false;
 
 		BlueprintTool.Equip();
-		BlueprintTool.SpawnBlueprint(_currentBlueprint);
+		BlueprintTool.SpawnBlueprint(name);
 	}
 
-	private string _currentBlueprint;
 	public PlayerController PlayerController { get; set; }
 	public BlueprintTool BlueprintTool { get; set; }
 }
