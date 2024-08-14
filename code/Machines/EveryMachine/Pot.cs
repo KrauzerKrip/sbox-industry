@@ -22,8 +22,6 @@ namespace Sandbox.Machines.EveryMachine
 
 		protected override void OnFixedUpdate()
 		{
-
-
 			base.OnFixedUpdate();
 		}
 	}

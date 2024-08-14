@@ -177,11 +177,11 @@
               {
                 "__type": "Sandbox.Machines.ResourceConnector",
                 "__guid": "b4b95cf0-c7b2-49af-a6f4-3278470a4cfe",
-                "ConnectionType": "In",
-                "ResourceAmount": 0,
-                "ResourceTypes": [
+                "AllowedResourceTypes": [
                   "heat"
-                ]
+                ],
+                "ConnectionType": "In",
+                "ResourceAmount": 0
               }
             ]
           }

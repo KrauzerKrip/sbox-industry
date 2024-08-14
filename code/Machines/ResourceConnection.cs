@@ -13,5 +13,16 @@ namespace Sandbox.Machines
 		[Property]
 		public ResourceConnector ResourceConnectorOut { get; set; }
 
+		protected override void OnFixedUpdate()
+		{
+			if (ResourceConnectorIn.ResourceAmount == 0 || ResourceConnectorIn.CurrentResource == ResourceConnectorOut.CurrentResource) {
+				ResourceConnectorIn.ResourceAmount += ResourceConnectorOut.ResourceAmount;
+				ResourceConnectorIn.CurrentResource = ResourceConnectorOut.CurrentResource;
+				ResourceConnectorOut.ResourceAmount = 0;
+			}
+
+			base.OnFixedUpdate();
+		}
+
 	}
 }

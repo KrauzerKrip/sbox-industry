@@ -35,7 +35,10 @@ namespace Sandbox.Machines
 
 		public virtual void Use( GameObject user )
 		{
-			OnUse( user, GameObject );
+			if (OnUse != null)
+			{
+				OnUse( user, GameObject );
+			}
 		}
 
 		protected override void OnFixedUpdate()

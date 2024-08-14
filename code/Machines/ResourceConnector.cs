@@ -13,9 +13,11 @@ namespace Sandbox.Machines
 		[Property, Category( "Info" )]
 		public ConnectionType ConnectionType { get; set; }
 		[Property, Category( "Info" )]
-		public List<string> ResourceTypes { get; set; }
+		public List<string> AllowedResourceTypes { get; set; }
 		[Property, Category( "Info" )]
 		public float ResourceAmount { get; set; }
+		[Property, Category( "Info") ]
+		public string CurrentResource { get; set; }
 		[Property]
 		public ResourceConnection ResourceConnection { get; set; }
 

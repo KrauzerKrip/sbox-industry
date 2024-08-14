@@ -96,7 +96,7 @@ namespace Sandbox.Tools
 									}
 								}
 
-								if ( connector.ResourceTypes.SequenceEqual( otherConnector.ResourceTypes ) && connectionDirection != 0 )
+								if ( connector.AllowedResourceTypes.SequenceEqual( otherConnector.AllowedResourceTypes ) && connectionDirection != 0 )
 								{
 									GameObject connectionObject = ConnectionObject.Clone();
 									ResourceConnection connection = connectionObject.Components.GetOrCreate<ResourceConnection>();
