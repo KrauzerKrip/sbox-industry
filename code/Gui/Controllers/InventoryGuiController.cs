@@ -22,8 +22,15 @@ namespace Sandbox.Gui.Controllers
 		protected override void OnStart()
 		{
 			InventoryGui.OnItemClick += (string itemName) => {
-				DraggedItem = itemName;
-				DraggedItemAmount = Inventory.Resources[itemName];
+				if ( DraggedItem == itemName )
+				{
+					DraggedItem = null;
+					DraggedItemAmount = 0;
+				} else
+				{
+					DraggedItem = itemName;
+					DraggedItemAmount = Inventory.Resources[itemName];
+				}
 			};
 
 			InventoryGui.OnRightClick += () =>
@@ -55,6 +62,12 @@ namespace Sandbox.Gui.Controllers
 			} else
 			{
 				InventoryGui.IsCompact = false;
+			}
+
+			if ( !PlayerController.IsInventoryOpened && !PlayerController.IsMachineGuiOpened )
+			{
+				DraggedItem = null;
+				DraggedItemAmount = 0;
 			}
 
 			InventoryGui.Resources = Inventory.Resources.Clone();

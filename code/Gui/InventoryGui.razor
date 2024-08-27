@@ -35,11 +35,11 @@
 								string key = Resources.Keys.ToList()[resIndex];
 							}
 
-							<div class="inventory-slot" draggable="true" title="lol" onmousedown=@( () => {
+							<div class="inventory-slot" draggable="true" title="lol" onclick=@( () => {
 								if (OnItemClick != null) {
 									OnItemClick(key);
-								} 
-							}) oncontextmenu=@( () => {
+								}
+					 }) onrightclick=@( () => {
 								if (OnRightClick != null) {
 								 OnRightClick();
 								}
