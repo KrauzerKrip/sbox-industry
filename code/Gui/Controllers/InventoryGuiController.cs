@@ -72,11 +72,20 @@ namespace Sandbox.Gui.Controllers
 
 			InventoryGui.Resources = Inventory.Resources.Clone();
 
-			if ( DraggedItem != null ) {
+			if ( DraggedItem != null && DraggedItemAmount != 0) {
 				if ( InventoryGui.Resources.ContainsKey( DraggedItem ) && Inventory.Resources.ContainsKey( DraggedItem ) )
 				{
+					InventoryGui.DraggedItemName = DraggedItem;
+					InventoryGui.DraggedItemAmount = DraggedItemAmount;
+					InventoryGui.DraggedItemPosX = Mouse.Position.x;
+					InventoryGui.DraggedItemPosY = Mouse.Position.y;
+					InventoryGui.IsDraggedItemShown = true;
+
 					InventoryGui.Resources[DraggedItem] = Inventory.Resources[DraggedItem] - DraggedItemAmount;
 				}
+			} else
+			{
+				InventoryGui.IsDraggedItemShown = false;
 			}
 
 			base.OnUpdate();

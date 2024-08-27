@@ -15,6 +15,10 @@ InventoryGui {
 		color: #fff;
 	}
 
+	.dragged-item {
+		position: absolute;
+	}
+	
 	.inventory {
 		background-color: #686D76;
 		pointer-events: all;

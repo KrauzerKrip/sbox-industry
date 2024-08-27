@@ -10,6 +10,14 @@
 
 			</div>
 		}
+
+		if ( IsDraggedItemShown )
+		{
+			<div class="dragged-item" style="left: @DraggedItemPosX; top: @DraggedItemPosY;">
+				@DraggedItemName ( @DraggedItemAmount )
+			</div>
+		}
+
 		<div class="inventory">
 			<div class="inventory-container">
 				@{int resIndex = 0;}
@@ -72,10 +80,15 @@
 	public delegate void ItemClickHandler(string itemName);
 	public event ItemClickHandler OnItemClick;
 	public event Action OnRightClick;
+	public bool IsDraggedItemShown { get; set; }
+	public float DraggedItemPosX { get; set; }
+	public float DraggedItemPosY { get; set; }
+	public string DraggedItemName { get; set; }
+	public float DraggedItemAmount { get; set; }
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine(IsShown);
+		return HashCode.Combine(IsShown, DraggedItemPosX, DraggedItemPosY, IsDraggedItemShown);
 	}
 
 	private void HandleDragStart() {
