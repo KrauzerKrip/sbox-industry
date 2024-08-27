@@ -119,6 +119,8 @@ namespace Sandbox.Tools
 
 									connector.ResourceConnection = connection;
 									otherConnector.ResourceConnection = connection;
+
+									otherConnector.GameObject.AddSibling( _currentBlueprint , false);
 								}
 							}
 						}
@@ -180,23 +182,13 @@ namespace Sandbox.Tools
 						throw new ComponentException( "Blueprint Tool: current blueprint object doesn't have MachineBase component." );
 					}
 
-					foreach (ResourceConnector resourceConnector in machineBase.Connectors)
-					{
-						if ( resourceConnector.ConnectionType == ConnectionType.In)
+					foreach (ResourceConnector resourceConnector in machineBase.Connectors ) {
+						if ( resourceConnector.ResourceConnection.GameObject != null)
 						{
-							GameObject otherObj = resourceConnector.ResourceConnection.ResourceConnectorOut.GameObject;
-							MachineBase otherMachineBase = otherObj.Components.Get<MachineBase>();
-							if (otherMachineBase == null)
-							{
-								throw new ComponentException( "Blueprint Tool: other object in the connection doesn't have MachineBase component." );
-							}
-
-
-
-							resourceConnector.ResourceConnection.ResourceConnectorOut.GameObject.Destroy();
+							resourceConnector.ResourceConnection.GameObject.Destroy();
 						}
-						resourceConnector.ResourceConnection.Destroy();
 					}
+
 					_blueprintLookingAt.Destroy();
 				}
 			} else
@@ -223,7 +215,15 @@ namespace Sandbox.Tools
 
 		public override void Reload()
 		{
-			
+			if ( _currentBlueprint == null )
+			{
+				return;
+			}
+
+			Angles angles = _currentBlueprint.Transform.Rotation.Angles();
+			angles.yaw += 90f;
+
+			_currentBlueprint.Transform.Rotation = angles.ToRotation();
 		}
 
 		public void SpawnBlueprint(string blueprintName)

@@ -10,32 +10,74 @@ namespace Sandbox.Machines.EveryMachine
 	{
 		[Property, Category( "Components" )]
 		public ResourceConnector HeatOut {  get; set; }
+		[Property, Category( "Components" )]
+		public Resources Resources { get; set; }
 
 		[Property, Category("Info")]
-		public SolidFuel FuelResource { get; private set; }
-		[Property, Category( "Info" ), Range(0, 10)]
-		public float FuelMass { get; private set; }
+		public string FuelResourceName { get; private set; }
+
+		public override float TryLoadResource( string name, float mass )
+		{
+			float loaded = base.TryLoadResource( name, mass );
+			if ( loaded > 0 )
+			{
+				FuelResourceName = name;
+			}
+
+			return loaded;
+		}
+
+		public float GetFuelMass()
+		{
+			if (FuelResourceName == null)
+			{
+				return 0;
+			}
+
+			if (Inventory.Resources.TryGetValue(FuelResourceName, out float mass))
+			{
+				return mass;
+			}
+			return 0;
+		}
+
+		protected override void OnStart()
+		{
+			AcceptableResources = new List<string>() {
+				"wood"
+			};
+
+			base.OnStart();
+		}
 
 		protected override void OnFixedUpdate()
 		{
-			if ( FuelMass <= 0 )
+			float fuelMass = GetFuelMass();
+
+			if ( fuelMass <= 0 )
 			{
 				return;
 			}
 
-			float fuelConsumptionPerSecond = 1.0f / FuelResource.BurningDuration;
+			Resources resources = Resources.Components.
+				Get<Resources>();
+			GameObject fuelResourceObject = resources.GetByName( "wood" );
+			SolidFuel fuelResource = fuelResourceObject.Components.Get<SolidFuel>();
+
+			float fuelConsumptionPerSecond = 1.0f / fuelResource.BurningDuration;
 			float fuelConsumed = fuelConsumptionPerSecond * Time.Delta;
-			
-			if (FuelMass < fuelConsumed) {
-				fuelConsumed = FuelMass;
+
+			if ( fuelMass < fuelConsumed )
+			{
+				fuelConsumed = fuelMass;
 			}
 
-			float heatProduced = fuelConsumed * FuelResource.CombustionHeat;
+			float heatProduced = fuelConsumed * fuelResource.CombustionHeat;
 
 			HeatOut.ResourceAmount += heatProduced;
 			HeatOut.CurrentResource = "heat";
 
-			FuelMass -= fuelConsumed;
+			Inventory.Resources[FuelResourceName] -= fuelConsumed;
 
 			base.OnFixedUpdate();
 		}

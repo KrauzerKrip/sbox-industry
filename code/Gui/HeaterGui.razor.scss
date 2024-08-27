@@ -9,6 +9,15 @@ HeaterGui {
 	font-weight: bold;
 	border-radius: 20px;
 
+	.heater {
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		pointer-events: all;
+	}
+
 	.title {
 		font-size: 25px;
 		font-family: Poppins;
@@ -19,6 +28,7 @@ HeaterGui {
 		display: flex;
 		flex-direction: column;
 		background-color: #686D76;
+		margin-right: 750px;
 	}
 
 	.top-container {

@@ -1,9 +1,13 @@
 @using System
 @using Sandbox.Tools
+@using Sandbox.UI
 @inherits PanelComponent
 
-<root>
-	@if (Show) {
+
+@if (IsShown)
+{
+<root class="heater-root">
+	<div class="heater">
 		<div class="container">
 			<div class="top-container">
 				<h1>100 °C</h1>
@@ -12,23 +16,28 @@
 				<div></div>
 				<h1>228 J/S</h1>
 			</div>
-			<div class="bottom-container">
+			<div class="bottom-container" onclick=@( () => { if ( OnFuelSlotClick != null) { OnFuelSlotClick(); } } )>
 				<div class="fuel-icon-container">
 					<img src=@FuelIconPath/>
 					<h1>@FuelMass kg</h1>
 				</div>
 			</div>
 		</div>
-	}
+	</div>
 </root>
+}
 
 @code {
-	public bool Show { get; set; }
+	[Property]
+	public bool IsShown { get; set; }
+
 	public float FuelMass { get; set; }
 	public string FuelIconPath { get; set; }
 
+	public event Action OnFuelSlotClick;
+
 	protected override int BuildHash()
 	{
-		return HashCode.Combine(FuelMass, Show);
+		return HashCode.Combine(FuelMass, IsShown);
 	}
 }

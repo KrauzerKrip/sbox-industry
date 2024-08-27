@@ -13,14 +13,6 @@ public enum State
 
 public class ResourceBase : Component
 {
-	[Property]
-	public static Dictionary<string, ResourceBase> Resources { get; set; } = new Dictionary<string, ResourceBase>();
-
-	public static ResourceBase GetByName(string name)
-	{
-		return Resources.GetValueOrDefault(name);
-	}
-
 	[Property, Category( "Info" )]
 	public string Name { get; protected set; }
 	[Property, Category( "Info" )]

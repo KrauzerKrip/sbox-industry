@@ -75,7 +75,7 @@ public sealed class Blueprint : Component
 
 		//if ( MachineBase.IsAttachment ) {
 		//	Buildable = false;
-		//	foreach (ResourceConnector connector in MachineBase.Connectors)
+		//	foreach (ResourceConnector co\nnector in MachineBase.Connectors)
 		//	{
 		//		if (connector.ResourceConnection != null)
 		//		{
@@ -163,6 +163,7 @@ public sealed class Blueprint : Component
 			Physics.Enabled = true;
 			Collider.IsTrigger = false;
 			Renderer.ClearMaterialOverrides();
+			Inventory.Resources.Clear();
 		}
 	}
 }

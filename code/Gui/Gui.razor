@@ -18,11 +18,6 @@
 	{
 		<MachineMenu PlayerController=@PlayerController BlueprintTool=@BlueprintTool></MachineMenu> 
 	}
-
-	@if (PlayerController.IsInventoryOpened)
-	{
-		<InventoryGui PlayerController=@PlayerController Inventory=@Inventory></InventoryGui>
-	}
 </root>
 
 @code
@@ -31,8 +26,6 @@
 	public PlayerController PlayerController { get; set; }
 	[Property]
 	public BlueprintTool BlueprintTool { get; set; }
-	[Property]
-	public Inventory Inventory { get; set; }
 
 	protected override int BuildHash()
 	{

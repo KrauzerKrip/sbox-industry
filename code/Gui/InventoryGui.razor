@@ -1,49 +1,84 @@
-﻿@using Sandbox.Tools
+@using System
+@using Sandbox.Tools
+@inherits PanelComponent
 
 <root>
-	<div class="inventory">
-		<div class="inventory-container">
-			@{int resIndex = 0;}
-			@for (int row = 0; row < 999; row++)
-			{
-				@{
-					bool shouldStop = false;
+	@if(IsShown) {
+		if (IsCompact)
+		{
+			<div class="inventory-offset">
 
-					if (Inventory.Resources.Count == 0)
+			</div>
+		}
+		<div class="inventory">
+			<div class="inventory-container">
+				@{int resIndex = 0;}
+				@for (int row = 0; row < 999; row++)
+				{
+					@{
+						bool shouldStop = false;
+
+						if (Resources.Count == 0)
+						{
+							break;
+						}
+					}
+					<div class="inventory-row">
+						@for (int col = 0; col < 9; col++)
+						{
+							if (resIndex >= Resources.Count)
+							{
+								shouldStop = true;
+								break;
+							}
+							@{
+								string key = Resources.Keys.ToList()[resIndex];
+							}
+
+							<div class="inventory-slot" draggable="true" title="lol" onmousedown=@( () => {
+								if (OnItemClick != null) {
+									OnItemClick(key);
+								} 
+							}) oncontextmenu=@( () => {
+								if (OnRightClick != null) {
+								 OnRightClick();
+								}
+							} )>
+								<h4>@key (@Resources[key])</h4>
+							</div>
+
+							resIndex++;
+						}
+					</div>
+
+					@if(shouldStop)
 					{
 						break;
 					}
 				}
-				<div class="inventory-row">
-					@for (int col = 0; col < 9; col++)
-					{
-						if (resIndex >= Inventory.Resources.Count)
-						{
-							shouldStop = true;
-							break;
-						}
-						@{
-							string key = Inventory.Resources.Keys.ToList()[resIndex];
-						}
-
-						<div class="inventory-slot">
-							<h4>@key (@Inventory.Resources[key])</h4>
-						</div>
-
-						resIndex++;
-					}
-				</div>
-
-				@if(shouldStop)
-				{
-					break;
-				}
-			}
+			</div>
 		</div>
-	</div>
+	}
 </root>
 
 @code {
+	[Property, Category( "Components" )]
 	public PlayerController PlayerController { get; set; }
-	public Inventory Inventory { get; set; }
+	[Property]
+	public bool IsCompact { get; set; }
+	[Property]
+	public bool IsShown { get; set; }
+	public Dictionary<string, float> Resources { get; set; }
+	public delegate void ItemClickHandler(string itemName);
+	public event ItemClickHandler OnItemClick;
+	public event Action OnRightClick;
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(IsShown);
+	}
+
+	private void HandleDragStart() {
+		Log.Info("Drag");
+	}
 }

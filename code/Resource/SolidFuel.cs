@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class SolidFuel : ResourceBase
+public class SolidFuel : Component
 {
 	[Property]
 	public float CombustionHeat { get; set; }

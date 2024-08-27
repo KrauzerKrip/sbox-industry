@@ -17,6 +17,8 @@ namespace Sandbox.Gui.Controllers
 
 		[Property]
 		public HeaterGui HeaterGui { get; set; }
+		[Property]
+		public InventoryGuiController InventoryGuiController { get; set; }
 
 		protected override void ShowMachineGui( GameObject user, GameObject machine )
 		{
@@ -34,7 +36,7 @@ namespace Sandbox.Gui.Controllers
 
 			_currentHeater = heater;
 
-			HeaterGui.Show = true;
+			HeaterGui.IsShown = true;
 			playerController.IsFreezed = true;
 			playerController.IsMachineGuiOpened = true;
 
@@ -56,11 +58,26 @@ namespace Sandbox.Gui.Controllers
 
 			_currentHeater = null;
 
-			HeaterGui.Show = false;
+			HeaterGui.IsShown = false;
 			playerController.IsFreezed = false;
 			playerController.IsMachineGuiOpened = false;
 
 			IsShown = false;
+		}
+
+		protected override void OnStart()
+		{
+			HeaterGui.OnFuelSlotClick += () =>
+			{
+				if ( InventoryGuiController.DraggedItem != null )
+				{
+					float unloaded = InventoryGuiController.Inventory.TryUnloadResource( InventoryGuiController.DraggedItem, InventoryGuiController.DraggedItemAmount );
+					float loaded = _currentHeater.TryLoadResource( InventoryGuiController.DraggedItem, unloaded );
+					InventoryGuiController.DraggedItemAmount -= loaded;
+				}
+			};
+
+			base.OnStart();
 		}
 
 		protected override void OnUpdate()
@@ -70,7 +87,7 @@ namespace Sandbox.Gui.Controllers
 				return;
 			}
 
-			HeaterGui.FuelMass = _currentHeater.FuelMass;
+			HeaterGui.FuelMass = _currentHeater.GetFuelMass();
 
 			base.OnUpdate();
 		}

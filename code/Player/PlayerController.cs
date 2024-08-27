@@ -70,11 +70,14 @@ public sealed partial class PlayerController : Component
 		{
 			IsMachineMenuOpened = !IsMachineMenuOpened;
 			IsInventoryOpened = false;
-			OnHideMachineGui();
+			if ( OnHideMachineGui != null )
+			{
+				OnHideMachineGui();
+			}
 		}
 
 		if (Input.Pressed( "attack1" ) )
-		{
+		{;
 			GetCurrentTool().Attack1();
 		}
 		if ( Input.Pressed( "attack2" ) )
@@ -90,7 +93,10 @@ public sealed partial class PlayerController : Component
 		{
 			IsInventoryOpened = !IsInventoryOpened;
 			IsMachineMenuOpened = false;
-			OnHideMachineGui();
+			if ( OnHideMachineGui != null )
+			{
+				OnHideMachineGui();
+			}
 		}
 		
 		if ( Input.Pressed( "use" ) )
@@ -100,7 +106,10 @@ public sealed partial class PlayerController : Component
 			if ( IsMachineGuiOpened )
 			{
 				wasMachineGuiOpened = true;
-				OnHideMachineGui();
+				if ( OnHideMachineGui != null )
+				{
+					OnHideMachineGui();
+				}
 			}
 
 			if ( !wasMachineGuiOpened )

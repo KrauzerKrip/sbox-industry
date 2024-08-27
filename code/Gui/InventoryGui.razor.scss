@@ -1,4 +1,4 @@
-Gui {
+InventoryGui {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -15,7 +15,7 @@ Gui {
 		color: #fff;
 	}
 
-	.machine-menu {
+	.inventory {
 		background-color: #686D76;
 		pointer-events: all;
 		width: 800px;
@@ -23,27 +23,25 @@ Gui {
 		margin: 200px, 200px, 200px, 200px;
 	}
 
-	.machine-menu-container {
+	.inventory-container {
 		display: flex;
 		flex-direction: column;
 		flex-basis: 50%;
 	}
 
-	.machine-menu-row {
+	.inventory-row {
 		display: flex;
 		flex-direction: row;
 		flex-basis: 11.1%;
 	}
 
-	.machine-slot {
+	.inventory-slot {
 		background-color: rgb(55, 58, 64);
 		padding: 25px;
 		margin: 10px;
 	}
 
-	.tool {
-		position: absolute;
-		top: 250px;
-		right: 400px;
+	.inventory-offset {
+		width: 500px;
 	}
 }

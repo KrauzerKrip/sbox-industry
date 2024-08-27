@@ -1,5 +1,5 @@
 {
-  "__guid": "7be140ae-f5f3-472e-9147-f8ae410ac888",
+  "__guid": "b803a438-37db-4983-ae3a-3a8224800599",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -252,12 +252,6 @@
                 "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
                 "component_type": "BlueprintTool"
               },
-              "Inventory": {
-                "_type": "component",
-                "component_id": "097dc296-7a10-48a5-8cc5-d58744910c95",
-                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
-                "component_type": "Inventory"
-              },
               "PlayerController": {
                 "_type": "component",
                 "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
@@ -284,7 +278,8 @@
             },
             {
               "__type": "HeaterGui",
-              "__guid": "4dfdc135-c197-4d66-b6f0-58db798894bf"
+              "__guid": "4dfdc135-c197-4d66-b6f0-58db798894bf",
+              "IsShown": false
             }
           ]
         },
@@ -303,6 +298,73 @@
                 "component_id": "4dfdc135-c197-4d66-b6f0-58db798894bf",
                 "go": "6201f4b2-19fd-4da1-b5f8-4ebcea8a2dac",
                 "component_type": "HeaterGui"
+              },
+              "InventoryGuiController": {
+                "_type": "component",
+                "component_id": "7518aa7f-d08f-4362-a719-11a5999213ce",
+                "go": "1c3efd8b-ae89-4ece-9074-a53fbc95b73a",
+                "component_type": "InventoryGuiController"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "0fa00fb3-0f04-47fa-995c-e75e88c05713",
+          "Flags": 0,
+          "Name": "Inventory GUI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "8168659f-f70e-4730-ae62-413719445867",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "InventoryGui",
+              "__guid": "80b500ea-f553-45e8-bd52-739fc08bf595",
+              "IsCompact": false,
+              "IsShown": false,
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "1c3efd8b-ae89-4ece-9074-a53fbc95b73a",
+          "Flags": 0,
+          "Name": "Inventory GUI Controller",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Gui.Controllers.InventoryGuiController",
+              "__guid": "7518aa7f-d08f-4362-a719-11a5999213ce",
+              "DraggedItemAmount": 0,
+              "Inventory": {
+                "_type": "component",
+                "component_id": "097dc296-7a10-48a5-8cc5-d58744910c95",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "Inventory"
+              },
+              "InventoryGui": {
+                "_type": "component",
+                "component_id": "80b500ea-f553-45e8-bd52-739fc08bf595",
+                "go": "0fa00fb3-0f04-47fa-995c-e75e88c05713",
+                "component_type": "InventoryGui"
+              },
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
               }
             }
           ]
@@ -439,6 +501,12 @@
                 "component_type": "Inventory"
               },
               "IsAttachment": false,
+              "Resources": {
+                "_type": "component",
+                "component_id": "05b9cca0-79ac-4f95-b46c-60a3bcfcfacc",
+                "go": "5de8ddc9-e36b-4369-b897-44d8c70db5ce",
+                "component_type": "Resources"
+              },
               "Subscriber": {
                 "_type": "component",
                 "component_id": "3334d94f-bbcb-4361-bbd7-fab18a07f82a",
@@ -521,7 +589,7 @@
           "Mass": 25,
           "Resource": {
             "_type": "component",
-            "component_id": "e6372d1d-3f34-4eaf-aaaf-ec1c67ba76e1",
+            "component_id": "ce6c224c-680c-41c5-8d20-66c9f59e9754",
             "go": "82dd06ea-453c-49e2-83b3-304ce66fcecc",
             "component_type": "ResourceBase"
           }
@@ -538,10 +606,15 @@
       "Components": [
         {
           "__type": "ResourceBase",
-          "__guid": "e6372d1d-3f34-4eaf-aaaf-ec1c67ba76e1",
+          "__guid": "ce6c224c-680c-41c5-8d20-66c9f59e9754",
           "Name": "wood",
-          "Resources": {},
           "State": "Solid"
+        },
+        {
+          "__type": "SolidFuel",
+          "__guid": "00f31c76-8aee-43a1-9f4d-65b867bd0537",
+          "BurningDuration": 60,
+          "CombustionHeat": 16300000
         }
       ]
     },
@@ -740,6 +813,25 @@
       "Flags": 0,
       "Name": "GameObject",
       "Enabled": true
+    },
+    {
+      "__guid": "5de8ddc9-e36b-4369-b897-44d8c70db5ce",
+      "Flags": 0,
+      "Name": "Resources",
+      "Position": "-154.9494,-903.5154,405.9432",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Resources",
+          "__guid": "05b9cca0-79ac-4f95-b46c-60a3bcfcfacc",
+          "Objects": {
+            "wood": {
+              "_type": "gameobject",
+              "go": "82dd06ea-453c-49e2-83b3-304ce66fcecc"
+            }
+          }
+        }
+      ]
     }
   ],
   "SceneProperties": {
