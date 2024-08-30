@@ -1,5 +1,5 @@
 {
-  "__guid": "b803a438-37db-4983-ae3a-3a8224800599",
+  "__guid": "ce7655f4-4b1a-4a4f-ac8f-18314eafb235",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -205,6 +205,12 @@
             {
               "__type": "Sandbox.Tools.BlueprintTool",
               "__guid": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
+              "AcquiredBlueprints": {
+                "_type": "component",
+                "component_id": "bb5e9c4b-05c4-431c-a32d-ca5faf24b90e",
+                "go": "3f250c45-a444-463f-bafe-a4b5aeb5cd84",
+                "component_type": "AcquiredBlueprints"
+              },
               "Blueprints": {
                 "heater": {
                   "_type": "gameobject",
@@ -241,6 +247,7 @@
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
               "ZIndex": 100
             },
             {
@@ -274,6 +281,7 @@
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
               "ZIndex": 100
             },
             {
@@ -321,6 +329,7 @@
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
               "ZIndex": 100
             },
             {
@@ -366,6 +375,20 @@
                 "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
                 "component_type": "PlayerController"
               }
+            }
+          ]
+        },
+        {
+          "__guid": "3f250c45-a444-463f-bafe-a4b5aeb5cd84",
+          "Flags": 0,
+          "Name": "Acquired Blueprints",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "AcquiredBlueprints",
+              "__guid": "bb5e9c4b-05c4-431c-a32d-ca5faf24b90e",
+              "Blueprints": []
             }
           ]
         }
@@ -597,28 +620,6 @@
       ]
     },
     {
-      "__guid": "82dd06ea-453c-49e2-83b3-304ce66fcecc",
-      "Flags": 0,
-      "Name": "WoodResource",
-      "Position": "38.85205,-174.52,412.8892",
-      "Tags": "resource",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ResourceBase",
-          "__guid": "ce6c224c-680c-41c5-8d20-66c9f59e9754",
-          "Name": "wood",
-          "State": "Solid"
-        },
-        {
-          "__type": "SolidFuel",
-          "__guid": "00f31c76-8aee-43a1-9f4d-65b867bd0537",
-          "BurningDuration": 60,
-          "CombustionHeat": 16300000
-        }
-      ]
-    },
-    {
       "__guid": "8817473d-2d29-46dd-859e-95f9349c36e8",
       "Flags": 0,
       "Name": "Pot",
@@ -830,6 +831,30 @@
               "go": "82dd06ea-453c-49e2-83b3-304ce66fcecc"
             }
           }
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "82dd06ea-453c-49e2-83b3-304ce66fcecc",
+          "Flags": 0,
+          "Name": "WoodResource",
+          "Position": "193.8015,728.9954,6.945984",
+          "Tags": "resource",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ResourceBase",
+              "__guid": "ce6c224c-680c-41c5-8d20-66c9f59e9754",
+              "Name": "wood",
+              "State": "Solid"
+            },
+            {
+              "__type": "SolidFuel",
+              "__guid": "00f31c76-8aee-43a1-9f4d-65b867bd0537",
+              "BurningDuration": 60,
+              "CombustionHeat": 16300000
+            }
+          ]
         }
       ]
     }

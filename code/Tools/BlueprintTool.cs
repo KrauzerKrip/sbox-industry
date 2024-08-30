@@ -22,7 +22,9 @@ namespace Sandbox.Tools
 		[Property]
 		PlayerController PlayerController { get; set; }
 		[Property]
-		public GameObject ConnectionObject { get; set; }	
+		public GameObject ConnectionObject { get; set; }
+		[Property]
+		public AcquiredBlueprints AcquiredBlueprints { get; set; }
 
 		private GameObject _currentBlueprint;
 		private GameObject _blueprintLookingAt;
@@ -228,7 +230,12 @@ namespace Sandbox.Tools
 
 		public void SpawnBlueprint(string blueprintName)
 		{
-			if (Blueprints.TryGetValue(blueprintName, out var blueprint))
+			if ( !AcquiredBlueprints.Blueprints.Exists( x => x.Equals( blueprintName ) ) )
+			{
+				return;
+			}
+
+			if ( Blueprints.TryGetValue( blueprintName, out var blueprint ) )
 			{
 				_currentBlueprint = blueprint.Clone();
 			}

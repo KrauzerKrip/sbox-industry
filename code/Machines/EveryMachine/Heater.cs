@@ -15,6 +15,7 @@ namespace Sandbox.Machines.EveryMachine
 
 		[Property, Category("Info")]
 		public string FuelResourceName { get; private set; }
+		public float EnergyProduction { get; private set; }
 
 		public override float TryLoadResource( string name, float mass )
 		{
@@ -66,6 +67,8 @@ namespace Sandbox.Machines.EveryMachine
 
 			float fuelConsumptionPerSecond = 1.0f / fuelResource.BurningDuration;
 			float fuelConsumed = fuelConsumptionPerSecond * Time.Delta;
+
+			EnergyProduction = fuelConsumptionPerSecond * fuelResource.CombustionHeat;
 
 			if ( fuelMass < fuelConsumed )
 			{

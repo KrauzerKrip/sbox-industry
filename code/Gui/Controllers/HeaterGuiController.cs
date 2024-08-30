@@ -88,6 +88,7 @@ namespace Sandbox.Gui.Controllers
 			}
 
 			HeaterGui.FuelMass = _currentHeater.GetFuelMass();
+			HeaterGui.EnergyProduction = _currentHeater.EnergyProduction;
 
 			base.OnUpdate();
 		}

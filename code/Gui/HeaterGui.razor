@@ -10,11 +10,11 @@
 	<div class="heater">
 		<div class="container">
 			<div class="top-container">
-				<h1>100 °C</h1>
+					<h1>@Temperature °C</h1>
 			</div>
 			<div class="middle-container">
 				<div></div>
-				<h1>228 J/S</h1>
+					<h1>@EnergyProduction J/S</h1>
 			</div>
 			<div class="bottom-container" onclick=@( () => { if ( OnFuelSlotClick != null) { OnFuelSlotClick(); } } )>
 				<div class="fuel-icon-container">
@@ -33,6 +33,8 @@
 
 	public float FuelMass { get; set; }
 	public string FuelIconPath { get; set; }
+	public float EnergyProduction { get; set; }
+	public float Temperature { get; set; }
 
 	public event Action OnFuelSlotClick;
 
