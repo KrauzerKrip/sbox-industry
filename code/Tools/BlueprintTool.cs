@@ -26,6 +26,9 @@ namespace Sandbox.Tools
 		[Property]
 		public AcquiredBlueprints AcquiredBlueprints { get; set; }
 
+		[ConVar( "game_blueprint_required" )]
+		public static bool IsBlueprintRequired { get; set; }
+
 		private GameObject _currentBlueprint;
 		private GameObject _blueprintLookingAt;
 		private Mode _mode;
@@ -47,6 +50,13 @@ namespace Sandbox.Tools
 				_mode = Mode.Builder;
 				CurrentMode = "Builder";
 			} ) ;
+		}
+
+		protected override void OnStart()
+		{
+			ConsoleSystem.SetValue( "game_blueprint_required", true );
+
+			base.OnStart();
 		}
 
 		protected override void OnUpdate()
@@ -230,7 +240,7 @@ namespace Sandbox.Tools
 
 		public void SpawnBlueprint(string blueprintName)
 		{
-			if ( !AcquiredBlueprints.Blueprints.Exists( x => x.Equals( blueprintName ) ) )
+			if ( IsBlueprintRequired && !AcquiredBlueprints.Blueprints.Exists( x => x.Equals( blueprintName ) ) )
 			{
 				return;
 			}

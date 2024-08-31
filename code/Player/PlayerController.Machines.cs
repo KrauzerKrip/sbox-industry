@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sandbox.Machines;
+using Sandbox.Player;
 
 public partial class PlayerController
 {
@@ -12,18 +13,18 @@ public partial class PlayerController
 	public event HideMachineGuiHandler OnHideMachineGui;
 	public bool IsMachineGuiOpened { get; set; }
 
-	public void TryUseMachine()
+	public void TryUse()
 	{
-		SceneTraceResult result = Scene.Trace.Ray( AimRay, 1000 ).WithTag( "machine" ).Run();
+		SceneTraceResult result = Scene.Trace.Ray( AimRay, 1000 ).WithTag( "usable" ).Run();
 		if ( result.GameObject != null && result.GameObject.IsValid )
 		{
-			MachineBase machineBase = result.GameObject.Components.Get<MachineBase>();
-			if ( machineBase == null )
+			IUsable usable = result.GameObject.Components.Get<IUsable>();
+			if ( usable == null )
 			{
-				throw new ComponentException("Machine " +  result.GameObject.Name + " doesn't have MachineBase component.");
+				throw new ComponentException("Usable game object " +  result.GameObject.Name + " doesn't have a component implement IUsable.");
 			}
 
-			machineBase.Use( GameObject );
+			usable.Use( GameObject );
 		}
 	}
 }

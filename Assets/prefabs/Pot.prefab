@@ -23,7 +23,7 @@
         "Name": "Pot itself",
         "Position": "0,0,24.91394",
         "Scale": "10,10,10",
-        "Tags": "machine",
+        "Tags": "machine,usable",
         "Enabled": true,
         "Components": [
           {

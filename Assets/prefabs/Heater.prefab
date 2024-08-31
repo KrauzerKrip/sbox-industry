@@ -22,7 +22,7 @@
         "Name": "Heater itself",
         "Position": "-47.2994,285.4098,1334.508",
         "Scale": "24.06707,21.30017,33.65294",
-        "Tags": "machine",
+        "Tags": "machine,usable",
         "Enabled": true,
         "Components": [
           {

@@ -42,6 +42,8 @@ public partial class PlayerController
 		{
 			index = Tools.Count - 1;
 		}
+
+		_currentToolIndex = index;
 	}
 
 	public ToolBase GetCurrentTool()

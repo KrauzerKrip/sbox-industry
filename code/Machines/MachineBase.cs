@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sandbox.Player;
 
 namespace Sandbox.Machines
 {
-	public abstract class MachineBase : Component
+	public abstract class MachineBase : Component, IUsable
 	{
 		[Property, Category( "Components" )]
 		public MachineSubscriber Subscriber { get; set; }

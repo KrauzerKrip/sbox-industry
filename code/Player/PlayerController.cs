@@ -114,7 +114,7 @@ public sealed partial class PlayerController : Component
 
 			if ( !wasMachineGuiOpened )
 			{
-				TryUseMachine();
+				TryUse();
 			}
 
 			TryUseBlueprint();
@@ -140,7 +140,7 @@ public sealed partial class PlayerController : Component
 			SetToolIndex( 0 );
 		}
 		if ( Input.Pressed( "Slot1" ) )
-		{
+		{ 
 			SetToolIndex( 1 );
 		}
 		if ( Input.Pressed( "Slot2" ) )
