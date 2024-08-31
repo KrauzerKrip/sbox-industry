@@ -54,8 +54,6 @@ namespace Sandbox.Tools
 
 		protected override void OnStart()
 		{
-			ConsoleSystem.SetValue( "game_blueprint_required", true );
-
 			base.OnStart();
 		}
 
