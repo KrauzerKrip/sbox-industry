@@ -10,6 +10,9 @@ namespace Sandbox.Agriculture
 {
 	public class Bush : Component, IUsable, IHarvestable
 	{
+		[Property]
+		public GameObject ResourceCrate { get; set; }
+
 		private const float _yieldMass = 1;
 
 		public void Use( GameObject user )
@@ -26,8 +29,20 @@ namespace Sandbox.Agriculture
 			}
 
 			float loaded = inventory.TryLoadResource( "wood", _yieldMass );
+			float rest = _yieldMass - loaded;
 
-
+			if ( rest > 0 )
+			{
+				GameObject resourceCrateObject = ResourceCrate.Clone();
+				resourceCrateObject.Transform.Position = GameObject.Transform.Position;
+				ResourceCrate resourceCrate = resourceCrateObject.Components.Get<ResourceCrate>();
+				if (resourceCrate == null)
+				{
+					throw new ComponentException( "ResourceCrate object doesn't have ResourceCrate component" );
+				}
+				resourceCrate.ResourceName = "wood";
+				resourceCrate.ResourceMass = rest;
+			}
 
 			GameObject.Destroy();
 		}

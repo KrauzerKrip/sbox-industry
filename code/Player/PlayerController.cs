@@ -101,7 +101,6 @@ public sealed partial class PlayerController : Component
 		
 		if ( Input.Pressed( "use" ) )
 		{
-			TryLoadResourceIntoInventory();
 			bool wasMachineGuiOpened = false;
 			if ( IsMachineGuiOpened )
 			{

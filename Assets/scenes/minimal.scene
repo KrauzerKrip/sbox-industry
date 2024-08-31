@@ -134,6 +134,12 @@
               "component_id": "8de7e467-40ae-48b9-bd87-dfed82a639d4",
               "go": "201a730d-6f55-4670-8cc3-62f80fe6eb1d",
               "component_type": "BlueprintTool"
+            },
+            {
+              "_type": "component",
+              "component_id": "82ed4ea7-c2b8-422a-93c3-a47fc8b3d1f0",
+              "go": "50d26ecf-0043-4aca-9be8-e9a26b47893f",
+              "component_type": "AxeTool"
             }
           ],
           "WalkSpeed": 200
@@ -391,6 +397,25 @@
               "Blueprints": []
             }
           ]
+        },
+        {
+          "__guid": "50d26ecf-0043-4aca-9be8-e9a26b47893f",
+          "Flags": 0,
+          "Name": "AxeTool",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Tools.AxeTool",
+              "__guid": "82ed4ea7-c2b8-422a-93c3-a47fc8b3d1f0",
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
+              }
+            }
+          ]
         }
       ]
     },
@@ -417,7 +442,7 @@
           "Name": "Heater itself",
           "Position": "-47.2994,285.4098,1334.508",
           "Scale": "24.06707,21.30017,33.65294",
-          "Tags": "machine",
+          "Tags": "machine,usable",
           "Enabled": true,
           "Components": [
             {
@@ -587,12 +612,12 @@
       "Flags": 0,
       "Name": "WoodResourceCrate",
       "Position": "-253.1511,-437.6813,357.1041",
-      "Tags": "resource_crate",
+      "Tags": "resource_crate,usable",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
-          "__guid": "0ddd440c-9b6f-4150-af19-f2146cc45656",
+          "__guid": "7450eca6-e985-44ed-b375-76e7c2bd61e6",
           "BodyGroups": 18446744073709551615,
           "Model": "models/citizen_props/crate01.vmdl",
           "RenderType": "On",
@@ -600,7 +625,7 @@
         },
         {
           "__type": "Sandbox.ModelPhysics",
-          "__guid": "dc16dc83-5529-4f0c-8eba-aa94b55d8879",
+          "__guid": "bc925b78-a408-401c-838b-dff07df58cd2",
           "Locking": {},
           "Model": "models/citizen_props/crate01.vmdl",
           "MotionEnabled": true,
@@ -608,14 +633,9 @@
         },
         {
           "__type": "ResourceCrate",
-          "__guid": "a35240e6-f04a-4c3e-93cb-6115793aee3c",
-          "Mass": 25,
-          "Resource": {
-            "_type": "component",
-            "component_id": "ce6c224c-680c-41c5-8d20-66c9f59e9754",
-            "go": "82dd06ea-453c-49e2-83b3-304ce66fcecc",
-            "component_type": "ResourceBase"
-          }
+          "__guid": "925fc459-50c7-4b4b-ba93-69c33b54cb56",
+          "ResourceMass": 25,
+          "ResourceName": "wood"
         }
       ]
     },
@@ -643,7 +663,7 @@
           "Name": "Pot itself",
           "Position": "0,0,24.91394",
           "Scale": "10,10,10",
-          "Tags": "machine",
+          "Tags": "machine,usable",
           "Enabled": true,
           "Components": [
             {
@@ -857,6 +877,53 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "775e18c8-33be-4fce-b0c9-eaa5b3ecfdb4",
+      "Flags": 0,
+      "Name": "Bush",
+      "Position": "-348.3553,-1002.105,357.4614",
+      "Scale": "2,2,2",
+      "Tags": "usable,harvestable",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ef795d0a-bc69-497e-aee7-9cbac054474c",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/agriculture/bush/bush.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "1b20625d-d5c5-4d39-827e-f8035b38642f",
+          "Locking": {},
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "46ce70eb-65d1-4827-a759-4f84003eac0f",
+          "IsTrigger": false,
+          "Model": "models/agriculture/bush/bush.vmdl",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.Agriculture.Bush",
+          "__guid": "f0f4aa70-a99c-4cf6-b9d1-9241c0039afd",
+          "ResourceCrate": {
+            "_type": "gameobject",
+            "prefab": "prefabs/resourcecrate.prefab"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "1365d0ef-57ad-4a09-a950-fb488bd4fa05",
+      "Flags": 0,
+      "Name": "GameObject",
+      "Enabled": true
     }
   ],
   "SceneProperties": {

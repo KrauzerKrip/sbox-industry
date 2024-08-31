@@ -1,0 +1,40 @@
+{
+  "RootObject": {
+    "__guid": "8a0973b7-51e2-4f9f-bcdc-b95f29bdbe32",
+    "Flags": 0,
+    "Name": "WoodResourceCrate",
+    "Position": "-253.1511,-437.6813,357.1041",
+    "Tags": "resource_crate,usable",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "0ddd440c-9b6f-4150-af19-f2146cc45656",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/citizen_props/crate01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.ModelPhysics",
+        "__guid": "dc16dc83-5529-4f0c-8eba-aa94b55d8879",
+        "Locking": {},
+        "Model": "models/citizen_props/crate01.vmdl",
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0
+      },
+      {
+        "__type": "ResourceCrate",
+        "__guid": "a35240e6-f04a-4c3e-93cb-6115793aee3c",
+        "ResourceMass": 0,
+        "ResourceName": ""
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
