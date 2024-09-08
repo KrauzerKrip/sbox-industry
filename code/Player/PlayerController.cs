@@ -30,6 +30,9 @@ public sealed partial class PlayerController : Component
 	public bool IsMachineMenuOpened { get; set; } = false;
 	[Property]
 	[Category( "Controls" )]
+	public bool IsGuiOpened { get; set; } = false;
+	[Property]
+	[Category( "Controls" )]
 	public bool IsFreezed { get; set; } = false;
 
 	public Angles EyeAngles { get; set; }
@@ -70,9 +73,9 @@ public sealed partial class PlayerController : Component
 		{
 			IsMachineMenuOpened = !IsMachineMenuOpened;
 			IsInventoryOpened = false;
-			if ( OnHideMachineGui != null )
+			if ( OnHideGui != null )
 			{
-				OnHideMachineGui();
+				OnHideGui();
 			}
 		}
 
@@ -89,29 +92,25 @@ public sealed partial class PlayerController : Component
 			GetCurrentTool().Reload();
 		}
 
-		if ( Input.Pressed( "Inventory" ) )
+		if ( Input.Pressed( "Inventory" ) & !IsGuiOpened )
 		{
 			IsInventoryOpened = !IsInventoryOpened;
 			IsMachineMenuOpened = false;
-			if ( OnHideMachineGui != null )
-			{
-				OnHideMachineGui();
-			}
 		}
 		
 		if ( Input.Pressed( "use" ) )
 		{
-			bool wasMachineGuiOpened = false;
-			if ( IsMachineGuiOpened )
+			bool wasGuiOpened = false;
+			if ( IsGuiOpened )
 			{
-				wasMachineGuiOpened = true;
-				if ( OnHideMachineGui != null )
+				wasGuiOpened = true;
+				if ( OnHideGui != null )
 				{
-					OnHideMachineGui();
+					OnHideGui();
 				}
 			}
 
-			if ( !wasMachineGuiOpened )
+			if ( !wasGuiOpened && !IsGuiOpened)
 			{
 				TryUse();
 			}

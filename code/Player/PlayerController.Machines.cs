@@ -10,8 +10,7 @@ using Sandbox.Player;
 public partial class PlayerController
 {
 	public delegate void HideMachineGuiHandler( );
-	public event HideMachineGuiHandler OnHideMachineGui;
-	public bool IsMachineGuiOpened { get; set; }
+	public event HideMachineGuiHandler OnHideGui;
 
 	public void TryUse()
 	{
@@ -23,7 +22,6 @@ public partial class PlayerController
 			{
 				throw new ComponentException("Usable game object " +  result.GameObject.Name + " doesn't have a component implement IUsable.");
 			}
-
 			usable.Use( GameObject );
 		}
 	}

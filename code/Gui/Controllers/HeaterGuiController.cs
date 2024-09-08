@@ -38,9 +38,10 @@ namespace Sandbox.Gui.Controllers
 
 			HeaterGui.IsShown = true;
 			playerController.IsFreezed = true;
-			playerController.IsMachineGuiOpened = true;
+			playerController.IsGuiOpened = true;
+			playerController.IsInventoryOpened = true;
 
-			playerController.OnHideMachineGui += () =>
+			playerController.OnHideGui += () =>
 			{
 				HideMachineGui( user, machine );
 			};
@@ -60,7 +61,8 @@ namespace Sandbox.Gui.Controllers
 
 			HeaterGui.IsShown = false;
 			playerController.IsFreezed = false;
-			playerController.IsMachineGuiOpened = false;
+			playerController.IsGuiOpened = false;
+			playerController.IsInventoryOpened = false;
 
 			IsShown = false;
 		}

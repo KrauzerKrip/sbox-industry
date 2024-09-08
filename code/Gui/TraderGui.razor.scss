@@ -1,0 +1,84 @@
+TraderGui {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+
+	.title {
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.trader {
+		background-color: rgba(96, 96, 96, 0.75);
+		backdrop-filter: blur(10px);
+		pointer-events: all;
+		width: 600px;
+		height: 800px;
+		margin: 200px, 200px, 200px, 200px;
+		padding: 8px;
+	}
+
+	.offers {
+		overflow-y: scroll;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		width: 100%;
+	}
+
+	.offer {
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(72, 72, 72, 0);
+		display: flex;
+		flex-direction: row;
+		border-color: rgb(16, 16, 16);
+		border-width: 2px;
+		border-style: solid;
+		border-radius: 4px;
+		height: 10%;
+		justify-content: space-between;
+		align-items: center;
+		padding: 8px;
+	}
+
+	.offer-name {
+		font-size: 24px;
+	}
+
+	.item-icon {
+		width: 64px;
+		height: 64px;
+	}
+
+	.price-count-container {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		align-items: center;
+		padding: 8px 0px;
+	}
+
+	.button {
+		display: inline-block;
+		background-color: rgb(16, 16, 16);
+		color: white;
+		padding: 8px 12px;
+		border-radius: 4px;
+		width: 64px;
+		height: 64px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.button :hover {
+	}
+}

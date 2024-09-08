@@ -1,0 +1,58 @@
+@using System
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if (IsShown)
+	{
+		<div class="trader">
+			<div class="container">
+				<div class="tabs">
+
+				</div>
+				<div class="offers">
+					@foreach( var (item, price) in PurchaseOffers ) {
+						<div class="offer">
+							<img class="item-icon" src="icons/thermodynamics.png" alt="Lamp" width="32" height="32" />
+							<p class="offer-name">
+								@item
+							</p>
+							<div class="price-count-container">
+								<form>
+									<input type="number" />
+								</form>
+								<div class="price-tag"> 
+									$@price
+								</div>
+							</div>
+							<div class="button" onclick="@( () => OnPurchase( item, 1 ) )">
+								Buy
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	}
+</root>
+
+@code
+{
+
+	[Property]
+	public bool IsShown { get; set; }
+	[Property]
+	public Dictionary<string, float> PurchaseOffers { get; set; }
+	[Property]
+	public Dictionary<string, float> SaleOffers { get; set; }
+
+	public delegate void PurchaseHandler(string name, float count);
+	public event PurchaseHandler OnPurchase;
+
+
+	protected override int BuildHash()
+	{
+			return HashCode.Combine(IsShown, PurchaseOffers, SaleOffers );
+	}
+}

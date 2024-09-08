@@ -416,6 +416,30 @@
               }
             }
           ]
+        },
+        {
+          "__guid": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
+          "Flags": 0,
+          "Name": "Trader GUI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TraderGui",
+              "__guid": "a4a6c23d-103b-4846-a2ac-32968e70fb3c",
+              "IsShown": false
+            },
+            {
+              "__type": "TraderGuiController",
+              "__guid": "fc5b3c7b-14a0-4a31-92fd-d4f44e56edb9",
+              "TraderGui": {
+                "_type": "component",
+                "component_id": "a4a6c23d-103b-4846-a2ac-32968e70fb3c",
+                "go": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
+                "component_type": "TraderGui"
+              }
+            }
+          ]
         }
       ]
     },
@@ -924,6 +948,69 @@
       "Flags": 0,
       "Name": "GameObject",
       "Enabled": true
+    },
+    {
+      "__guid": "62255081-5c36-49f3-953d-1c139bbb435f",
+      "Flags": 0,
+      "Name": "Blueprint Trader",
+      "Position": "-164.1024,-894.5284,356.2614",
+      "Rotation": "0,0,-0.9914449,-0.1305261",
+      "Tags": "usable",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "6e73077b-2edf-4c60-b56c-72e2f1375cc6",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "21c7745c-aad9-484f-b62b-29759ec46a99",
+          "Locking": {},
+          "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "BlueprintTrader",
+          "__guid": "c725d805-9858-4d35-90f4-b2ffceb036e4",
+          "Buying": {},
+          "Selling": {},
+          "Subscriber": {
+            "_type": "component",
+            "component_id": "fc5b3c7b-14a0-4a31-92fd-d4f44e56edb9",
+            "go": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
+            "component_type": "TraderGuiController"
+          }
+        },
+        {
+          "__type": "Sandbox.CapsuleCollider",
+          "__guid": "a72a0165-3e94-47f9-bfde-fd017bad9aac",
+          "End": "0,0,60.92064",
+          "IsTrigger": false,
+          "Radius": 18.328764,
+          "Start": "0,0,0",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "e5e63f9f-c14c-40d4-b3cf-389e2b838afb",
+      "Flags": 0,
+      "Name": "Config",
+      "Position": "-385.8283,-697.6431,416.8624",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Config",
+          "__guid": "c8e275c2-d945-455a-947e-e3b7f1b6708a"
+        }
+      ]
     }
   ],
   "SceneProperties": {

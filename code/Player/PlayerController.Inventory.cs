@@ -10,5 +10,5 @@ public partial class PlayerController
 	[Category("Components")]
 	public Inventory Inventory { get; set; }
 
-	public bool IsInventoryOpened { get; private set; }
+	public bool IsInventoryOpened { get; set; }
 }

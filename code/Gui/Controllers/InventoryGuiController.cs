@@ -55,16 +55,15 @@ namespace Sandbox.Gui.Controllers
 				InventoryGui.IsShown = false;
 			}
 
-			if ( PlayerController.IsMachineGuiOpened )
+			if ( PlayerController.IsGuiOpened )
 			{
-				InventoryGui.IsShown = true;
 				InventoryGui.IsCompact = true;
 			} else
 			{
 				InventoryGui.IsCompact = false;
 			}
 
-			if ( !PlayerController.IsInventoryOpened && !PlayerController.IsMachineGuiOpened )
+			if ( !PlayerController.IsInventoryOpened )
 			{
 				DraggedItem = null;
 				DraggedItemAmount = 0;
