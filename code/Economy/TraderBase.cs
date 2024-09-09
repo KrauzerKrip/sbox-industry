@@ -12,9 +12,9 @@ namespace Sandbox.Economy
 	{
 
 		[Property, Category( "Info" )]
-		public Dictionary<string, float> Buying { get; set; }
+		public Dictionary<string, float> PurchaseOffers { get; set; }
 		[Property, Category( "Info" )]
-		public Dictionary<string, float> Selling { get; set; }
+		public Dictionary<string, float> SaleOffers { get; set; }
 		[Property, Category( "Components" )]
 		public TraderSubscriber Subscriber { get; set; }
 

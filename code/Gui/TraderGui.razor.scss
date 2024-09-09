@@ -23,6 +23,46 @@ TraderGui {
 		height: 800px;
 		margin: 200px, 200px, 200px, 200px;
 		padding: 8px;
+		border-radius: 4px;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		gap: 8px;
+		width: 100%;
+	}
+
+	.tab-container {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.tab {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		border: 2px solid rgb(16, 16, 16);
+		font-size: 24px;
+		background-color: rgba(12, 12, 12, 0.35);
+	}
+
+	.tab-active {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		border: 2px solid rgb(16, 16, 16);
+		font-size: 24px;
+	}
+
+
+	#tab-left {
+		border-radius: 4px 0px 0px 4px;
+	}
+
+	#tab-right {
+		border-radius: 0px 4px 4px 0px;
 	}
 
 	.offers {
@@ -31,6 +71,7 @@ TraderGui {
 		flex-direction: column;
 		gap: 8px;
 		width: 100%;
+		height: 100%;
 	}
 
 	.offer {
@@ -67,7 +108,7 @@ TraderGui {
 		padding: 8px 0px;
 	}
 
-	.button {
+	.action-button {
 		display: inline-block;
 		background-color: rgb(16, 16, 16);
 		color: white;
@@ -79,6 +120,18 @@ TraderGui {
 		justify-content: center;
 	}
 
-	.button :hover {
+	.action-button :hover {
+	}
+
+	.oopsie-container {
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.oopsie {
+		font-size: 24px;
+		align-self: center;
+		justify-self: center;
 	}
 }

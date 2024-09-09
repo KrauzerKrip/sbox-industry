@@ -8,13 +8,16 @@
 	{
 		<div class="trader">
 			<div class="container">
-				<div class="tabs">
-
+				<div class="tab-container">
+					<button id="tab-left" class=@(Tab == Tabs.Purchase ? "tab-active" : "tab") onclick="@( () => Tab=Tabs.Purchase )">Purchase</button>
+					<button id="tab-right" class=@(Tab == Tabs.Sale ? "tab-active" : "tab") onclick="@( () => Tab=Tabs.Sale )">Sale</button>
 				</div>
 				<div class="offers">
-					@foreach( var (item, price) in PurchaseOffers ) {
-						<div class="offer">
-							<img class="item-icon" src="icons/thermodynamics.png" alt="Lamp" width="32" height="32" />
+					@if (Tab == Tabs.Purchase) {
+						@foreach (var (item, price) in PurchaseOffers)
+						{
+							<div class="offer">
+								<img class="item-icon" src="icons/thermodynamics.png" alt="Lamp" width="32" height="32" />
 							<p class="offer-name">
 								@item
 							</p>
@@ -26,11 +29,39 @@
 									$@price
 								</div>
 							</div>
-							<div class="button" onclick="@( () => OnPurchase( item, 1 ) )">
+							<div class="action-button" onclick="@( () => OnPurchase( item, 1 ) )">
 								Buy
 							</div>
 						</div>
 					}
+				} else if (Tab == Tabs.Sale) {
+					if ( SaleOffers.Count == 0 ) {
+						<div class="oopsie-container">
+							<p class="oopsie">Oopsie! No offers right now, sweetie, but maybe in the future I will have something for you :3</p>
+						</div>
+					}
+
+					@foreach (var (item, price) in SaleOffers)
+					{
+						<div class="offer">
+							<img class="item-icon" src="icons/thermodynamics.png" alt="Lamp" width="32" height="32" />
+							<p class="offer-name">
+								@item
+							</p>
+							<div class="price-count-container">
+								<form>
+									<input type="number" />
+								</form>
+								<div class="price-tag">
+									$@price
+								</div>
+							</div>
+							<div class="action-button" onclick="@( () => OnSale( item, 1 ) )">
+								Sell
+							</div>
+						</div>
+					}
+				}
 				</div>
 			</div>
 		</div>
@@ -43,16 +74,21 @@
 	[Property]
 	public bool IsShown { get; set; }
 	[Property]
+	public Tabs Tab { get; set; }
+	[Property]
 	public Dictionary<string, float> PurchaseOffers { get; set; }
 	[Property]
 	public Dictionary<string, float> SaleOffers { get; set; }
 
 	public delegate void PurchaseHandler(string name, float count);
 	public event PurchaseHandler OnPurchase;
-
+	public delegate void SaleHandler(string name, float count);
+	public event SaleHandler OnSale;
+	public delegate void TabChangeHandler(Tabs tab);
+	public event TabChangeHandler OnTabChange;
 
 	protected override int BuildHash()
 	{
-			return HashCode.Combine(IsShown, PurchaseOffers, SaleOffers );
+			return HashCode.Combine(IsShown, PurchaseOffers, SaleOffers, Tab);
 	}
 }

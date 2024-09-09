@@ -19,7 +19,7 @@
 		}
 
 		<div class="inventory">
-			<div class="inventory-container">
+			<div class="item-container">
 				@{int resIndex = 0;}
 				@for (int row = 0; row < 999; row++)
 				{
@@ -65,6 +65,10 @@
 					}
 				}
 			</div>
+			@if (!IsCompact)
+			{
+				<div class="player-container"></div>
+			}
 		</div>
 	}
 </root>

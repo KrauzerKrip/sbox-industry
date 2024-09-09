@@ -26,6 +26,7 @@
           "Feathering": 0.02,
           "FrameInterval": 5,
           "MaxDistance": 512,
+          "MultiBounce": false,
           "Projection": "Sphere",
           "RenderDynamically": false,
           "TintColor": "1,1,1,1",
@@ -50,6 +51,8 @@
           "EnableCollision": true,
           "MapName": "maps/main.vmap",
           "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -125,6 +128,7 @@
             "component_type": "Inventory"
           },
           "IsFreezed": false,
+          "IsGuiOpened": false,
           "IsMachineMenuOpened": false,
           "JumpStrength": 400,
           "RunSpeed": 300,
@@ -425,9 +429,19 @@
           "Enabled": true,
           "Components": [
             {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "3873b63e-8e2c-4303-9b21-dd2aef424b8c",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
+              "ZIndex": 100
+            },
+            {
               "__type": "TraderGui",
               "__guid": "a4a6c23d-103b-4846-a2ac-32968e70fb3c",
-              "IsShown": false
+              "IsShown": false,
+              "Tab": "Purchase"
             },
             {
               "__type": "TraderGuiController",
@@ -979,8 +993,10 @@
         {
           "__type": "BlueprintTrader",
           "__guid": "c725d805-9858-4d35-90f4-b2ffceb036e4",
-          "Buying": {},
-          "Selling": {},
+          "PurchaseOffers": {
+            "wood": 1
+          },
+          "SaleOffers": {},
           "Subscriber": {
             "_type": "component",
             "component_id": "fc5b3c7b-14a0-4a31-92fd-d4f44e56edb9",

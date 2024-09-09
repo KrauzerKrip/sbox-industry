@@ -18,19 +18,25 @@ InventoryGui {
 	.dragged-item {
 		position: absolute;
 	}
-	
+
 	.inventory {
-		background-color: #686D76;
+		display: flex;
+		flex-direction: row;
 		pointer-events: all;
-		width: 800px;
-		height: 500px;
+		justify-content: center;
+		align-items: center;
 		margin: 200px, 200px, 200px, 200px;
+		gap: 8px;
 	}
 
-	.inventory-container {
+	.item-container {
+		background-color: rgba(96, 96, 96, 0.75);
 		display: flex;
 		flex-direction: column;
+		backdrop-filter: blur(10px);
 		flex-basis: 50%;
+		width: 800px;
+		height: 800px;
 	}
 
 	.inventory-row {
@@ -40,12 +46,22 @@ InventoryGui {
 	}
 
 	.inventory-slot {
-		background-color: rgb(55, 58, 64);
+		background-color: rgba(72, 72, 72, 0);
 		padding: 25px;
 		margin: 10px;
+		border-color: rgb(16, 16, 16);
+		border-width: 2px;
+		border-style: solid;
+		border-radius: 4px;
 	}
 
 	.inventory-offset {
 		width: 500px;
+	}
+
+	.player-container {
+		background-color: rgba(96, 96, 96, 0.75);;
+		width: 400px;
+		height: 800px;
 	}
 }
