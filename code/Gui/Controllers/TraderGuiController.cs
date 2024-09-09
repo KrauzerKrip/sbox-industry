@@ -17,16 +17,18 @@ public sealed class TraderGuiController : TraderSubscriber
 	public TraderGui TraderGui { get; set; }
 	[Property]
 	public TraderBase CurrentTrader { get; set; }
+	[Property]
+	public PlayerController PlayerController { get; set; }
 
 	protected override void OnStart()
 	{
 		TraderGui.OnPurchase += ( string name, float count ) =>
 		{
-			Log.Info( $"Purchased {count} of {name} " );
+			CurrentTrader.Buy( PlayerController.GameObject, name, count );
 		};
 		TraderGui.OnSale += ( string name, float count ) =>
 		{
-			Log.Info( $"Sold {count} of {name}" );
+			CurrentTrader.Sell( PlayerController.GameObject, name, count );
 		};
 
 		base.OnStart();

@@ -15,4 +15,14 @@ public sealed class BlueprintTrader : TraderBase, IUsable
 	{
 
 	}
+
+	public override void Buy( GameObject buyer, string itemName, float count )
+	{
+
+	}
+
+	public override void Sell( GameObject seller, string itemName, float count )
+	{
+
+	}
 }

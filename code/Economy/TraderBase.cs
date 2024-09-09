@@ -1,4 +1,5 @@
-﻿using Sandbox.Machines;
+﻿using Sandbox.Exceptions;
+using Sandbox.Machines;
 using Sandbox.Player;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace Sandbox.Economy
 	{
 
 		[Property, Category( "Info" )]
-		public Dictionary<string, float> PurchaseOffers { get; set; }
+		public Dictionary<string, float> PurchaseOffers { get; set; }   // name, price
 		[Property, Category( "Info" )]
-		public Dictionary<string, float> SaleOffers { get; set; }
+		public Dictionary<string, float> SaleOffers { get; set; }       // name, price
 		[Property, Category( "Components" )]
 		public TraderSubscriber Subscriber { get; set; }
 
@@ -37,5 +38,9 @@ namespace Sandbox.Economy
 				OnUse( user, GameObject );
 			}
 		}
+
+		public abstract void Buy( GameObject buyer, string itemName, float count );
+
+		public abstract void Sell( GameObject seller, string itemName, float count );
 	}
 }

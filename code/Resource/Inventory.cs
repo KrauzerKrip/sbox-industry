@@ -3,6 +3,9 @@ using Sandbox.Exceptions;
 
 public sealed class Inventory : Component
 {
+	[Property, Category( "Components" )]
+	public GameObject ResourceCrateObject { get; set; }
+
 	[Property]
 	[Range(1, 999)]
 	[Category("Stats")]
@@ -14,6 +17,7 @@ public sealed class Inventory : Component
 	public float MaxMass { get; set; }
 
 	public Dictionary<string, float> Resources { get; private set; } = new Dictionary<string, float>();
+
 
 	public float TryLoadResource(string name, float mass)
 	{
@@ -67,6 +71,25 @@ public sealed class Inventory : Component
 		} else
 		{
 			return 0;
+		}
+	}
+
+	public void ForceLoadResource(string resourceName, float mass)
+	{
+		float loaded = TryLoadResource( resourceName, mass );
+		float rest = mass - loaded;
+
+		if ( rest > 0 )
+		{
+			GameObject resourceCrateObject = ResourceCrateObject.Clone();
+			resourceCrateObject.Transform.Position = GameObject.Transform.Position;
+			ResourceCrate resourceCrate = resourceCrateObject.Components.Get<ResourceCrate>();
+			if ( resourceCrate == null )
+			{
+				throw new ComponentException( "ResourceCrate object doesn't have ResourceCrate component" );
+			}
+			resourceCrate.ResourceName = resourceName;
+			resourceCrate.ResourceMass = rest;
 		}
 	}
 

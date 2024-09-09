@@ -161,7 +161,15 @@
           "__type": "Inventory",
           "__guid": "097dc296-7a10-48a5-8cc5-d58744910c95",
           "MaxMass": 100,
-          "MaxSlots": 9
+          "MaxSlots": 9,
+          "ResourceCrateObject": {
+            "_type": "gameobject",
+            "prefab": "prefabs/resourcecrate.prefab"
+          }
+        },
+        {
+          "__type": "Wallet",
+          "__guid": "9f40ca5f-d154-47c0-a33b-eb640dd6dd14"
         }
       ],
       "Children": [
@@ -403,29 +411,10 @@
           ]
         },
         {
-          "__guid": "50d26ecf-0043-4aca-9be8-e9a26b47893f",
-          "Flags": 0,
-          "Name": "AxeTool",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Tools.AxeTool",
-              "__guid": "82ed4ea7-c2b8-422a-93c3-a47fc8b3d1f0",
-              "PlayerController": {
-                "_type": "component",
-                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
-                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
-                "component_type": "PlayerController"
-              }
-            }
-          ]
-        },
-        {
           "__guid": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
           "Flags": 0,
           "Name": "Trader GUI",
-          "Position": "0,0,0",
+          "Position": "-0.00003051758,0,0",
           "Enabled": true,
           "Components": [
             {
@@ -441,16 +430,43 @@
               "__type": "TraderGui",
               "__guid": "a4a6c23d-103b-4846-a2ac-32968e70fb3c",
               "IsShown": false,
+              "PurchaseOffers": {},
+              "SaleOffers": {},
               "Tab": "Purchase"
             },
             {
               "__type": "TraderGuiController",
               "__guid": "fc5b3c7b-14a0-4a31-92fd-d4f44e56edb9",
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
+              },
               "TraderGui": {
                 "_type": "component",
                 "component_id": "a4a6c23d-103b-4846-a2ac-32968e70fb3c",
                 "go": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
                 "component_type": "TraderGui"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "50d26ecf-0043-4aca-9be8-e9a26b47893f",
+          "Flags": 0,
+          "Name": "AxeTool",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Tools.AxeTool",
+              "__guid": "82ed4ea7-c2b8-422a-93c3-a47fc8b3d1f0",
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
               }
             }
           ]
@@ -868,12 +884,6 @@
       ]
     },
     {
-      "__guid": "26676153-c918-44e8-b606-a9152a7133de",
-      "Flags": 0,
-      "Name": "GameObject",
-      "Enabled": true
-    },
-    {
       "__guid": "5de8ddc9-e36b-4369-b897-44d8c70db5ce",
       "Flags": 0,
       "Name": "Resources",
@@ -958,10 +968,50 @@
       ]
     },
     {
-      "__guid": "1365d0ef-57ad-4a09-a950-fb488bd4fa05",
+      "__guid": "42627bc3-8e6a-44f2-aff9-50cc8fe77314",
       "Flags": 0,
-      "Name": "GameObject",
-      "Enabled": true
+      "Name": "Resource Trader",
+      "Position": "-190.3991,-992.6691,356.2614",
+      "Rotation": "0,0,-0.9914449,-0.1305261",
+      "Tags": "usable",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "d3cd30b0-0eda-4509-a90e-1543fda6e3d8",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "1176e083-d1e8-4277-b49c-8c0c93901cea",
+          "Locking": {},
+          "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "Sandbox.CapsuleCollider",
+          "__guid": "66701c04-e5bf-436d-8d56-8a122dd65251",
+          "End": "0,0,60.92064",
+          "IsTrigger": false,
+          "Radius": 18.328764,
+          "Start": "0,0,0",
+          "Static": false
+        },
+        {
+          "__type": "ResourceTrader",
+          "__guid": "7b42ff56-a765-48d0-9519-2b9b9b6099be",
+          "PurchaseOffers": {
+            "wood": 1
+          },
+          "SaleOffers": {}
+        }
+      ]
     },
     {
       "__guid": "62255081-5c36-49f3-953d-1c139bbb435f",
