@@ -1,5 +1,5 @@
 {
-  "__guid": "ce7655f4-4b1a-4a4f-ac8f-18314eafb235",
+  "__guid": "4b15247a-bb4a-4015-acac-fd7d69e15b79",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -169,7 +169,8 @@
         },
         {
           "__type": "Wallet",
-          "__guid": "9f40ca5f-d154-47c0-a33b-eb640dd6dd14"
+          "__guid": "9f40ca5f-d154-47c0-a33b-eb640dd6dd14",
+          "Balance": 0
         }
       ],
       "Children": [
@@ -397,24 +398,10 @@
           ]
         },
         {
-          "__guid": "3f250c45-a444-463f-bafe-a4b5aeb5cd84",
-          "Flags": 0,
-          "Name": "Acquired Blueprints",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "AcquiredBlueprints",
-              "__guid": "bb5e9c4b-05c4-431c-a32d-ca5faf24b90e",
-              "Blueprints": []
-            }
-          ]
-        },
-        {
           "__guid": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
           "Flags": 0,
           "Name": "Trader GUI",
-          "Position": "-0.00003051758,0,0",
+          "Position": "0,0,0",
           "Enabled": true,
           "Components": [
             {
@@ -453,6 +440,20 @@
           ]
         },
         {
+          "__guid": "3f250c45-a444-463f-bafe-a4b5aeb5cd84",
+          "Flags": 0,
+          "Name": "Acquired Blueprints",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "AcquiredBlueprints",
+              "__guid": "bb5e9c4b-05c4-431c-a32d-ca5faf24b90e",
+              "Blueprints": []
+            }
+          ]
+        },
+        {
           "__guid": "50d26ecf-0043-4aca-9be8-e9a26b47893f",
           "Flags": 0,
           "Name": "AxeTool",
@@ -468,6 +469,24 @@
                 "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
                 "component_type": "PlayerController"
               }
+            }
+          ]
+        },
+        {
+          "__guid": "431b230b-34d1-475b-962c-22b549e61ade",
+          "Flags": 0,
+          "Name": "DialogueGui",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "DialogueGui",
+              "__guid": "c9e64ff9-b053-4386-9fdd-dd5d7fb16ec1",
+              "MyStringValue": "Hello World!"
+            },
+            {
+              "__type": "DialogueGuiController",
+              "__guid": "ad282610-feeb-4b90-9e8c-91667e10f11e"
             }
           ]
         }
@@ -656,40 +675,40 @@
                   "ResourceAmount": 0
                 }
               ]
+            },
+            {
+              "__guid": "8a0973b7-51e2-4f9f-bcdc-b95f29bdbe32",
+              "Flags": 0,
+              "Name": "WoodResourceCrate",
+              "Position": "-133.2951,355.9911,-68.69262",
+              "Tags": "resource_crate",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "7450eca6-e985-44ed-b375-76e7c2bd61e6",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/citizen_props/crate01.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                },
+                {
+                  "__type": "Sandbox.ModelPhysics",
+                  "__guid": "bc925b78-a408-401c-838b-dff07df58cd2",
+                  "Locking": {},
+                  "Model": "models/citizen_props/crate01.vmdl",
+                  "MotionEnabled": true,
+                  "RigidbodyFlags": 0
+                },
+                {
+                  "__type": "ResourceCrate",
+                  "__guid": "925fc459-50c7-4b4b-ba93-69c33b54cb56",
+                  "ResourceMass": 25,
+                  "ResourceName": "wood"
+                }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "__guid": "8a0973b7-51e2-4f9f-bcdc-b95f29bdbe32",
-      "Flags": 0,
-      "Name": "WoodResourceCrate",
-      "Position": "-253.1511,-437.6813,357.1041",
-      "Tags": "resource_crate,usable",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "7450eca6-e985-44ed-b375-76e7c2bd61e6",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/citizen_props/crate01.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelPhysics",
-          "__guid": "bc925b78-a408-401c-838b-dff07df58cd2",
-          "Locking": {},
-          "Model": "models/citizen_props/crate01.vmdl",
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0
-        },
-        {
-          "__type": "ResourceCrate",
-          "__guid": "925fc459-50c7-4b4b-ba93-69c33b54cb56",
-          "ResourceMass": 25,
-          "ResourceName": "wood"
         }
       ]
     },
@@ -1009,7 +1028,15 @@
           "PurchaseOffers": {
             "wood": 1
           },
-          "SaleOffers": {}
+          "SaleOffers": {
+            "wood": 0.5
+          },
+          "Subscriber": {
+            "_type": "component",
+            "component_id": "fc5b3c7b-14a0-4a31-92fd-d4f44e56edb9",
+            "go": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
+            "component_type": "TraderGuiController"
+          }
         }
       ]
     },
