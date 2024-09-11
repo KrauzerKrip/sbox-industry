@@ -480,9 +480,18 @@
           "Enabled": true,
           "Components": [
             {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "f40f5583-b636-4157-8fd1-5f6ade60d210",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
+              "ZIndex": 100
+            },
+            {
               "__type": "DialogueGui",
               "__guid": "c9e64ff9-b053-4386-9fdd-dd5d7fb16ec1",
-              "MyStringValue": "Hello World!"
+              "IsShown": false
             },
             {
               "__type": "DialogueGuiController",
@@ -1037,6 +1046,11 @@
             "go": "dacc23bd-1f22-4977-8b12-097a3a1a44da",
             "component_type": "TraderGuiController"
           }
+        },
+        {
+          "__type": "BlueprintTraderNpc",
+          "__guid": "492789cf-323c-4e8d-9019-68f3cdf8ed56",
+          "__enabled": false
         }
       ]
     },

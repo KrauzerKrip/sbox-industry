@@ -57,7 +57,6 @@ public sealed partial class PlayerController : Component
 
 	protected override void OnFixedUpdate()
 	{
-
 		float moveSpeed;
 
 		if ( Input.Down( "Run" ) )

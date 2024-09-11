@@ -3,12 +3,12 @@ using Sandbox.Machines;
 using Sandbox.Player;
 using Sandbox.Economy;
 
-public sealed class BlueprintTrader : TraderBase, IUsable
+public sealed class BlueprintTrader : TraderBase
 {
 
 	public override void Use( GameObject user )
 	{
-		base.Use( user );
+		// do nothing
 	}
 
 	protected override void OnUpdate()
