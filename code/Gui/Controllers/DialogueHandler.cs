@@ -35,6 +35,16 @@ namespace Sandbox.Gui.Controllers
 			}
 		}
 
+		public bool IsNodeLast()
+		{
+			if ( _currentDialogueNode.Children.Count == 0)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		public DialogueNode GetCurrentNode()
 		{
 			return _currentDialogueNode;
