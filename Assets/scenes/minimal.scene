@@ -59,6 +59,32 @@
       "Children": []
     },
     {
+      "__guid": "e5e63f9f-c14c-40d4-b3cf-389e2b838afb",
+      "Flags": 0,
+      "Name": "Config",
+      "Position": "-385.8283,-697.6431,416.8624",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Config",
+          "__guid": "c8e275c2-d945-455a-947e-e3b7f1b6708a"
+        }
+      ]
+    },
+    {
+      "__guid": "9e555dd8-6f12-43c6-a8e5-fe71c241f924",
+      "Flags": 0,
+      "Name": "Dialogue Manager",
+      "Position": "27.24762,-787.9631,484.4408",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Npc.DialogueManager",
+          "__guid": "fdc09a80-c627-402c-baf3-7046001c6dda"
+        }
+      ]
+    },
+    {
       "__guid": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
       "Flags": 0,
       "Name": "Player",
@@ -72,6 +98,7 @@
           "BodyGroups": 341,
           "CreateBoneObjects": false,
           "Model": "models/citizen/citizen.vmdl",
+          "Morphs": {},
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
@@ -171,6 +198,11 @@
           "__type": "Wallet",
           "__guid": "9f40ca5f-d154-47c0-a33b-eb640dd6dd14",
           "Balance": 0
+        },
+        {
+          "__type": "Sandbox.Player.PlayerInfo",
+          "__guid": "023e59e4-e832-4811-8ede-556362abb538",
+          "Guid": "00000000-0000-0000-0000-000000000000"
         }
       ],
       "Children": [
@@ -495,7 +527,25 @@
             },
             {
               "__type": "DialogueGuiController",
-              "__guid": "ad282610-feeb-4b90-9e8c-91667e10f11e"
+              "__guid": "ad282610-feeb-4b90-9e8c-91667e10f11e",
+              "DialogueGui": {
+                "_type": "component",
+                "component_id": "c9e64ff9-b053-4386-9fdd-dd5d7fb16ec1",
+                "go": "431b230b-34d1-475b-962c-22b549e61ade",
+                "component_type": "DialogueGui"
+              },
+              "DialogueManager": {
+                "_type": "component",
+                "component_id": "fdc09a80-c627-402c-baf3-7046001c6dda",
+                "go": "9e555dd8-6f12-43c6-a8e5-fe71c241f924",
+                "component_type": "DialogueManager"
+              },
+              "PlayerController": {
+                "_type": "component",
+                "component_id": "1ff80b6a-a675-4de4-8cac-ce81de3c4b8e",
+                "go": "3d97e79f-a60d-4f00-a28a-c2a3763c4c1a",
+                "component_type": "PlayerController"
+              }
             }
           ]
         }
@@ -1010,6 +1060,7 @@
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
+          "Morphs": {},
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
@@ -1069,6 +1120,7 @@
           "BodyGroups": 18446744073709551615,
           "CreateBoneObjects": false,
           "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
+          "Morphs": {},
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
@@ -1080,6 +1132,15 @@
           "Model": "models/citizen/skin/mascot/models/mascot_01.vmdl",
           "MotionEnabled": true,
           "RigidbodyFlags": 0
+        },
+        {
+          "__type": "Sandbox.CapsuleCollider",
+          "__guid": "a72a0165-3e94-47f9-bfde-fd017bad9aac",
+          "End": "0,0,60.92064",
+          "IsTrigger": false,
+          "Radius": 18.328764,
+          "Start": "0,0,0",
+          "Static": false
         },
         {
           "__type": "BlueprintTrader",
@@ -1096,26 +1157,14 @@
           }
         },
         {
-          "__type": "Sandbox.CapsuleCollider",
-          "__guid": "a72a0165-3e94-47f9-bfde-fd017bad9aac",
-          "End": "0,0,60.92064",
-          "IsTrigger": false,
-          "Radius": 18.328764,
-          "Start": "0,0,0",
-          "Static": false
-        }
-      ]
-    },
-    {
-      "__guid": "e5e63f9f-c14c-40d4-b3cf-389e2b838afb",
-      "Flags": 0,
-      "Name": "Config",
-      "Position": "-385.8283,-697.6431,416.8624",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Config",
-          "__guid": "c8e275c2-d945-455a-947e-e3b7f1b6708a"
+          "__type": "BlueprintTraderNpc",
+          "__guid": "6a1fa403-c4aa-42d1-8e39-6e41beb9397a",
+          "DialogueManager": {
+            "_type": "component",
+            "component_id": "fdc09a80-c627-402c-baf3-7046001c6dda",
+            "go": "9e555dd8-6f12-43c6-a8e5-fe71c241f924",
+            "component_type": "DialogueManager"
+          }
         }
       ]
     }

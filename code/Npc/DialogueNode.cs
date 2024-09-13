@@ -11,7 +11,7 @@ namespace Sandbox.Npc
 		public string AvatarImagePath { get; set; }
 		public string CharacterName { get; set; }
 		public string Text { get; set; }
-		public List<DialogueNode> Children { get; set; }
+		public List<DialogueNode> Children { get; set; } = new List<DialogueNode>();
 
 		public delegate void NodeActivatedHandler( GameObject player );
 		public event NodeActivatedHandler OnNodeActivated;

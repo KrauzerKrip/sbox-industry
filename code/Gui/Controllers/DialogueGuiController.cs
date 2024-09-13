@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Gui.Controllers;
 using Sandbox.Npc;
 
 public sealed class DialogueGuiController : Component
@@ -7,16 +8,36 @@ public sealed class DialogueGuiController : Component
 	public DialogueGui DialogueGui { get; set; }
 	[Property, Category( "Components" )]
 	public DialogueManager DialogueManager { get; set; }
+	[Property, Category( "Components" )]
+	public PlayerController PlayerController { get; set; }
+
+	private DialogueHandler _currentDialogueHandler;
+
+
 
 	protected override void OnStart()
 	{
 		DialogueManager.OnDialogueStart += ( GameObject player, Dialogue dialogue ) =>
 		{
-			DialogueGui.CharacterName = dialogue.Tree.Root.CharacterName;
-			DialogueGui.Text = dialogue.Tree.Root.Text;
-			DialogueGui.CharacterAvatarImage = dialogue.Tree.Root.AvatarImagePath;
-			dialogue.Tree.Root.Activate( player );
+			_currentDialogueHandler = new DialogueHandler( dialogue );
+			_currentDialogueHandler.Start();
+
+			DialogueNode node = _currentDialogueHandler.GetCurrentNode();
+			DialogueGui.CharacterName = node.CharacterName;
+			DialogueGui.Text = node.Text;
+			DialogueGui.CharacterAvatarImage = node.AvatarImagePath;
+			node.Activate( PlayerController.GameObject );
 			ShowDialogueGui();
+		};
+
+		DialogueGui.OnDialogueSkip += () =>
+		{
+			_currentDialogueHandler.Next();
+
+			DialogueNode node = _currentDialogueHandler.GetCurrentNode();
+			DialogueGui.CharacterName = node.CharacterName;
+			DialogueGui.Text = node.Text;
+			DialogueGui.CharacterAvatarImage = node.AvatarImagePath;
 		};
 
 		base.OnStart();

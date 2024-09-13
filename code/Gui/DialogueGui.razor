@@ -1,3 +1,4 @@
+@using System;
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
@@ -22,7 +23,9 @@
 						</p>
 					</div>
 					<div class="action-container">
-
+						<div class="action" onclick="@( () => { if (OnDialogueSkip != null) { OnDialogueSkip(); } } )">
+							Skip
+						</div>
 					</div>
 				</div>
 			</div>
@@ -37,6 +40,7 @@
 	public string CharacterName { get; set; }
 	public string CharacterAvatarImage { get; set; }
 	public string Text { get; set; }
+	public event Action OnDialogueSkip;
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
