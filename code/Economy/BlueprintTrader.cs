@@ -6,11 +6,6 @@ using Sandbox.Economy;
 public sealed class BlueprintTrader : TraderBase
 {
 
-	public override void Use( GameObject user )
-	{
-		// do nothing
-	}
-
 	protected override void OnUpdate()
 	{
 

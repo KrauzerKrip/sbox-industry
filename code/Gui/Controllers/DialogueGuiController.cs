@@ -70,12 +70,14 @@ public sealed class DialogueGuiController : Component
 	{
 		DialogueGui.IsShown = true;
 		PlayerController.IsFreezed = true;
+		PlayerController.IsGuiOpened = true;
 	}
 
 	public void HideDialogueGui()
 	{
 		DialogueGui.IsShown = false;
-		PlayerController.IsFreezed = false; 
+		PlayerController.IsFreezed = false;
+		PlayerController.IsGuiOpened = false;
 	}
 	
 	protected override void OnUpdate()

@@ -8,11 +8,15 @@ using System;
 
 enum Stage
 {
-	Introduction
+	Introduction,
+	Trade
 }
 
 public sealed class BlueprintTraderNpc : Npc, IUsable
 {
+	[Property]
+	public BlueprintTrader BlueprintTrader { get; set; }
+
 	private readonly Dialogue _introDialogue;
 	private Dictionary<Guid, Stage> _playerStages = new(); 
 
@@ -34,9 +38,15 @@ public sealed class BlueprintTraderNpc : Npc, IUsable
 			_playerStages[playerInfo.Guid] = Stage.Introduction;
 		}
 
+		if ( _playerStages[playerInfo.Guid] == Stage.Trade )
+		{
+			BlueprintTrader.Use( user );
+		}
+
 		Dialogue requiredDialogue = GetRequiredDialogue( _playerStages[playerInfo.Guid] );
 		if ( requiredDialogue != null ) {
 			StartDialogue( user, requiredDialogue );
+			_playerStages[playerInfo.Guid] = Stage.Trade;
 		}
 	}
 
